@@ -124,7 +124,7 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
                                       ),
                                       onPressed: () {
                                         setState(() {
-                                          Merchant_Login();
+                                          Hope_admin_Login();
                                         });
 
                                         if (Merchant_formkey.currentState!.validate()) {
@@ -190,7 +190,7 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
     );
   }
 
-Future Merchant_Login() async {
+Future Hope_admin_Login() async {
   var url =
       "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_login.php"; //intego wifi password
   //  var url ="https://anthracitic-pecks.000webhostapp.com/login.php";
@@ -218,8 +218,10 @@ Future Merchant_Login() async {
     // and use it to show a SnackBar.
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
+
     final _sharedPrefs = await SharedPreferences.getInstance();
     await _sharedPrefs.setBool(Hope_Admin_Key, true);
+
 
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));

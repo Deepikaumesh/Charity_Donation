@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../Admin/Hope_Admin_Splashscreen.dart';
+import '../User/Hope_User_Splashscreen.dart';
+import '../guest/gust_Splashscreen.dart';
 
 
-class Hope_Admin_Main_Way extends StatelessWidget {
+
+class Hope_Main_Way extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +42,7 @@ class Hope_Admin_Main_Way extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: (){
-                      //  Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_U()));
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_User_Splash()));
                     },
                     child: Column(
                       children: [
@@ -55,6 +58,23 @@ class Hope_Admin_Main_Way extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>gust_Splash()));
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      child: Image.asset(
+                        "assets/images/user.png",
+                        height: 140,
+                        width: 140,
+                      ),
+                    ),
+                    Text("Guest")
+                  ],
+                ),
               ),
             ],
           ),

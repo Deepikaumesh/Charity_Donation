@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Screen/Hope_main_way.dart';
+
 class Hope_Admin_Dashboard extends StatefulWidget {
   const Hope_Admin_Dashboard({Key? key}) : super(key: key);
 
@@ -17,6 +19,9 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Admin Dashboard"),
+        leading: IconButton(onPressed: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Main_Way()));
+        },icon: Icon(Icons.arrow_back),),
         actions: [
           IconButton(onPressed: (){
             Hope_Admin_Signout(context);
