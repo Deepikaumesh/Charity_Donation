@@ -223,8 +223,8 @@ Future Hope_admin_Login() async {
     await _sharedPrefs.setBool(Hope_Admin_Key, true);
 
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));
+  //  Navigator.push(context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));
     print("username:");
   } else {
     final snackBar = SnackBar(

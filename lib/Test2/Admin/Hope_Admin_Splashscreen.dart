@@ -21,7 +21,7 @@ class Hope_Admin_Splash extends StatefulWidget {
 class _Hope_Admin_SplashState extends State<Hope_Admin_Splash> {
 
   void initState() {
-    checkHopeAdminLoogedIn();
+    checkHopeAdminLoogedIn(context);
     super.initState();
   }
 
@@ -67,21 +67,22 @@ class _Hope_Admin_SplashState extends State<Hope_Admin_Splash> {
       ),
     );
   }
-  Future HopeAdmin_gotoLogin() async {
+  Future HopeAdmin_gotoLogin(BuildContext context) async {
     await Future.delayed(Duration(seconds: 1));
     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Hope_Admin_Login()));
   }
 
 
-  Future<void> checkHopeAdminLoogedIn() async{
+  Future<void> checkHopeAdminLoogedIn(BuildContext context) async{
     final _Hope_AdminsharedPrefs =await SharedPreferences.getInstance();
     print(Hope_Admin_Key);
     final _merchantLoggedIn=_Hope_AdminsharedPrefs.getBool(Hope_Admin_Key);
     if(_merchantLoggedIn == null || _merchantLoggedIn == false){
-      HopeAdmin_gotoLogin();
+      HopeAdmin_gotoLogin(context);
     }
     else{
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_Dashboard()));
+     // Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_Dashboard()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));
     }
 
   }

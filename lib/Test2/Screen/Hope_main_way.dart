@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Admin/Hope_Admin_Splashscreen.dart';
 import '../User/Hope_User_Splashscreen.dart';
-import '../guest/gust_Splashscreen.dart';
+
 
 
 
@@ -61,7 +61,7 @@ class Hope_Main_Way extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>gust_Splash()));
+           //       Navigator.push(context, MaterialPageRoute(builder: (context)=>gust_Splash()));
                 },
                 child: Column(
                   children: [
