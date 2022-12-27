@@ -24,7 +24,7 @@ class Hope_Main_Way extends StatelessWidget {
                   GestureDetector(
                     onTap: (){
                       //   check_Hope_Admin_LogedIn();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_Splash()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Customer_Splashscreen()));
 
                     },
                     child: Column(
