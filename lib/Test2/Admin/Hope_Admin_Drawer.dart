@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'Hope_Admin_Add_event.dart';
 import 'Hope_Admin_Edit_event.dart';
+import 'event_delete_main_page.dart';
 import 'event_edit_main_page.dart';
 
 
@@ -83,10 +84,10 @@ class MainDrawer extends StatelessWidget {
 
         ListTile(
           onTap: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => Business_Reg_Catagory()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Hope_Admin_event_Display_delete_page()));
           },
           leading: Icon(
             Icons.delete,

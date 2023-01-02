@@ -44,10 +44,11 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
               height: MediaQuery.of(context).size.height / 3,
               width: MediaQuery.of(context).size.width / 1.1,
               decoration: BoxDecoration(
-                  // color: Colors.yellow,
+                  border: Border.all(width: 0.5,color: Colors.pink),
+                  borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                       image: AssetImage("assets/images/orphanage.jpg"),
-                      fit: BoxFit.cover)),
+                      fit: BoxFit.fill)),
             ),
             SizedBox(
               height: 20,
@@ -56,14 +57,15 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_event_Display()));
                       },
                       child: Container(
-                        height: 100,
-                        width: 100,
+                        height: 150,
+                        width: 150,
                         decoration: BoxDecoration(
                             border: Border.all(width: 0.5),
                             borderRadius: BorderRadius.circular(8),
@@ -73,17 +75,24 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
                                 fit: BoxFit.fill)),
                       ),
                     ),
-                    Text("Events")
+                    Text("Events",style: TextStyle(color: Colors.pink.shade300,fontWeight: FontWeight.bold,fontSize: 20),)
                   ],
                 ),
                 Column(
+               crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      height: 100,
-                      width: 100,
-                      color: Colors.red,
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 0.5),
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.yellow,
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/events.jpg"),
+                              fit: BoxFit.fill)),
                     ),
-                    Text("Donation")
+                    Text("Donation",style: TextStyle(color: Colors.pink.shade300,fontWeight: FontWeight.bold,fontSize: 20),)
                   ],
                 ),
               ],
