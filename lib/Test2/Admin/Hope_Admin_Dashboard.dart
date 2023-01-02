@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/Hope_main_way.dart';
 import 'Hope_Admin_Drawer.dart';
+import 'Hope_Admin_View_events.dart';
 
 class Hope_Admin_Dashboard extends StatefulWidget {
   const Hope_Admin_Dashboard({Key? key}) : super(key: key);
@@ -56,16 +57,21 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
               children: [
                 Column(
                   children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 0.5),
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.yellow,
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/events.jpg"),
-                              fit: BoxFit.fill)),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_event_Display()));
+                      },
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 0.5),
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.yellow,
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/events.jpg"),
+                                fit: BoxFit.fill)),
+                      ),
                     ),
                     Text("Events")
                   ],

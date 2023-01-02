@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Hope_Admin_Add_event.dart';
+import 'Hope_Admin_Edit_event.dart';
+import 'event_edit_main_page.dart';
+
 
 
 class MainDrawer extends StatelessWidget {
@@ -50,8 +54,8 @@ class MainDrawer extends StatelessWidget {
 
         ListTile(
           onTap: () {
-            // Navigator.push(
-            //     context, MaterialPageRoute(builder: (context) => About_Us()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Hope_Admin_event_registration()));
           },
           leading: Icon(
             Icons.add,
@@ -64,8 +68,8 @@ class MainDrawer extends StatelessWidget {
         ),
         ListTile(
           onTap: () {
-            // Navigator.push(
-            //     context, MaterialPageRoute(builder: (context) => Version()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Hope_Admin_event_Display_edit_page()));
           },
           leading: Icon(
             Icons.mode_edit,
