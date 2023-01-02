@@ -48,24 +48,37 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
                       image: AssetImage("assets/images/orphanage.jpg"),
                       fit: BoxFit.cover)),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                     color: Colors.yellow,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/orphanage.jpg"),
-                          fit: BoxFit.cover)),
-
+                Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 0.5),
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.yellow,
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/events.jpg"),
+                              fit: BoxFit.fill)),
+                    ),
+                    Text("Events")
+                  ],
                 ),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
+                Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.red,
+                    ),
+                    Text("Donation")
+                  ],
                 ),
               ],
             )

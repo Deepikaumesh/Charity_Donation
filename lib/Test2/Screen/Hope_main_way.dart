@@ -59,23 +59,23 @@ class Hope_Main_Way extends StatelessWidget {
                   ),
                 ],
               ),
-              GestureDetector(
-                onTap: (){
-           //       Navigator.push(context, MaterialPageRoute(builder: (context)=>gust_Splash()));
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      child: Image.asset(
-                        "assets/images/user.png",
-                        height: 140,
-                        width: 140,
-                      ),
-                    ),
-                    Text("Guest")
-                  ],
-                ),
-              ),
+           //    GestureDetector(
+           //      onTap: (){
+           // //       Navigator.push(context, MaterialPageRoute(builder: (context)=>gust_Splash()));
+           //      },
+           //      child: Column(
+           //        children: [
+           //          Container(
+           //            child: Image.asset(
+           //              "assets/images/user.png",
+           //              height: 140,
+           //              width: 140,
+           //            ),
+           //          ),
+           //          Text("Guest")
+           //        ],
+           //      ),
+           //    ),
             ],
           ),
         )
