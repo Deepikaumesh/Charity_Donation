@@ -60,9 +60,9 @@ class _Get_DataState extends State<Get_Data> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
-     // color: Colors.yellow,
-     // padding: EdgeInsets.all(16.0),
+      height: 150,
+      // color: Colors.yellow,
+      // padding: EdgeInsets.all(16.0),
       child: FutureBuilder(
         future: getRequest(),
         builder: (BuildContext ctx, AsyncSnapshot snapshot) {
@@ -89,29 +89,40 @@ class _Get_DataState extends State<Get_Data> {
             );
           } else {
             return Container(
-
-
               height: 50,
-              width: MediaQuery.of(context).size.width/1.2,
+              width: MediaQuery.of(context).size.width / 1.2,
               color: Colors.pink.shade100,
               child: ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (ctx, index) => Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(snapshot.data[index].event_date,style: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold,fontSize: 15)),
-                          Text(snapshot.data[index].name,style: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold,fontSize: 15)),
-                          Text(snapshot.data[index].event_time,style: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold,fontSize: 15)),
+                          Text(snapshot.data[index].event_date,
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Text(snapshot.data[index].name,
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Text(snapshot.data[index].event_time,
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
                         ],
                       ),
                     ),
-
-                    Divider(thickness: 5,color: Colors.white,),
-
+                    Divider(
+                      thickness: 5,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),
