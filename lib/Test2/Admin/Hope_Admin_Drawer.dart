@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Hope_Admin_Add_event.dart';
-import 'Hope_Admin_Edit_event.dart';
+import 'View_more_Page_food_bookings.dart';
 import 'event_delete_main_page.dart';
 import 'event_edit_main_page.dart';
-
-
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -56,7 +54,9 @@ class MainDrawer extends StatelessWidget {
         ListTile(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Hope_Admin_event_registration()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Hope_Admin_event_registration()));
           },
           leading: Icon(
             Icons.add,
@@ -70,7 +70,10 @@ class MainDrawer extends StatelessWidget {
         ListTile(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Hope_Admin_event_Display_edit_page()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Hope_Admin_event_Display_edit_page()));
           },
           leading: Icon(
             Icons.mode_edit,
@@ -87,28 +90,28 @@ class MainDrawer extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Hope_Admin_event_Display_delete_page()));
+                    builder: (context) =>
+                        Hope_Admin_event_Display_delete_page()));
           },
           leading: Icon(
             Icons.delete,
             color: Colors.blueGrey.shade900,
           ),
-          title: Text("Delete Events",
-              style: GoogleFonts.prompt(fontSize: 15)),
+          title: Text("Delete Events", style: GoogleFonts.prompt(fontSize: 15)),
         ),
         //
-        // ListTile(
-        //   onTap: () {
-        //     Navigator.push(
-        //         context, MaterialPageRoute(builder: (context) => News_Reg()));
-        //   },
-        //   leading: Icon(
-        //     Icons.newspaper_rounded,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("",
-        //       style: GoogleFonts.prompt(fontSize: 15)),
-        // ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => food_donation_bookings_view_more()));
+          },
+          leading: Icon(
+            Icons.cancel,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Cancel food bookings",
+              style: GoogleFonts.prompt(fontSize: 15)),
+        ),
         // ListTile(
         //   onTap: () {
         //     Navigator.push(
@@ -160,7 +163,7 @@ class MainDrawer extends StatelessWidget {
         //   title: Text("Index Passing Test2",
         //       style: GoogleFonts.prompt(fontSize: 15)),
         // ),
-            ]),
+      ]),
     );
   }
 }

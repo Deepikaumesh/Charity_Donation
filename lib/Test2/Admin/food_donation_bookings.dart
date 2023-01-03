@@ -22,12 +22,12 @@ class User {
   });
 }
 
-class Get_Data extends StatefulWidget {
+class food_donation_bookings extends StatefulWidget {
   @override
-  _Get_DataState createState() => _Get_DataState();
+  _food_donation_bookingsState createState() => _food_donation_bookingsState();
 }
 
-class _Get_DataState extends State<Get_Data> {
+class _food_donation_bookingsState extends State<food_donation_bookings> {
 //Applying get request.
 
   Future<List<User>> getRequest() async {
