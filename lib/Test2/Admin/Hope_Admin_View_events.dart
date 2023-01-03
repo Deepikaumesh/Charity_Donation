@@ -33,7 +33,8 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
     //replace your restFull API here.
 
     final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/event_Display.php"));
+        "http://192.168.29.64/MySampleApp/Charity_Hope/event_Display.php"
+    ));
 
     var responseData = json.decode(response.body);
 

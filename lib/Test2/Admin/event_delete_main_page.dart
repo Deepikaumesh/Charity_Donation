@@ -141,7 +141,7 @@ class _Hope_Admin_event_Display_delete_pageState
                                                   .width /
                                                   1.2,
                                               padding: EdgeInsets.fromLTRB(
-                                                  5, 15, 50, 15),
+                                                  5, 5, 50, 15),
                                               child: Row(
                                                 crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -151,10 +151,10 @@ class _Hope_Admin_event_Display_delete_pageState
                                                   //   width: 10,
                                                   // ),
                                                  IconButton(onPressed: (){
-                                                   setState(() {
-                                                     delrecord(
-                                                         snapshot.data[index].id);
-                                                   });
+                                                   // setState(() {
+                                                   //   delrecord(
+                                                   //       snapshot.data[index].id);
+                                                   // });
                                                    showDialog(
                                                        context: context,
                                                        builder: (_) {
@@ -168,7 +168,11 @@ class _Hope_Admin_event_Display_delete_pageState
                                                            actions: [
                                                              TextButton(
                                                                  onPressed: () {
-                                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Hope_Admin_Dashboard()));
+                                                                   setState(() {
+                                                                     delrecord(
+                                                                         snapshot.data[index].id);
+                                                                   });
+                                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>Hope_Admin_Dashboard ()));
                                                                  },
                                                                  child: Text("ok")),
                                                              TextButton(
@@ -180,7 +184,7 @@ class _Hope_Admin_event_Display_delete_pageState
                                                          );
                                                        });
 
-                                                 }, icon: Icon(Icons.delete,size: 20,color: Colors.red.shade900,),),
+                                                 }, icon: Icon(Icons.delete,size: 30,color: Colors.red.shade900,),),
 
                                                 // Icon(Icons.delete,size: 18,color: Colors.red.shade900,),
                                                   SizedBox(
@@ -192,6 +196,7 @@ class _Hope_Admin_event_Display_delete_pageState
                                                     CrossAxisAlignment
                                                         .start,
                                                     children: [
+                                                      SizedBox(height: 10,),
                                                       Text(
                                                         "Event Name : " +
                                                             snapshot.data[index]
