@@ -65,16 +65,21 @@ class _Hope_Admin_event_Display_delete_pageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
-        backgroundColor: Colors.pink.shade300,
-        centerTitle: true,
         title: Text(
           "Delete Event",
-          style: GoogleFonts.prompt(fontSize: 22),
+          style: GoogleFonts.prompt(color: Colors.pink.shade300),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_rounded, color: Colors.pink.shade300,
+            size: 35, // add custom icons also
+          ),
         ),
       ),
       body: Container(

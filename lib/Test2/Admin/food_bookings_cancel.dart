@@ -62,16 +62,21 @@ class _food_bookings_cancelState extends State<food_bookings_cancel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
-        backgroundColor: Colors.pink.shade300,
-        centerTitle: true,
         title: Text(
-          "Food Donations",
-          style: GoogleFonts.prompt(fontSize: 22),
+          "Cancel food bookings",
+          style: GoogleFonts.prompt(color: Colors.pink.shade300),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_rounded, color: Colors.pink.shade300,
+            size: 35, // add custom icons also
+          ),
         ),
       ),
       body: Container(

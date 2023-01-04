@@ -37,9 +37,22 @@ class _Admin_remove_Craftitem_pageState extends State<Admin_remove_Craftitem_pag
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text(
+          "Remove craft item",
+          style: GoogleFonts.prompt(color: Colors.pink.shade300),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
         centerTitle: true,
-        backgroundColor: Colors.pink.shade300,
-        title: Text("Craft Shop"),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_rounded, color: Colors.pink.shade300,
+            size: 35, // add custom icons also
+          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
