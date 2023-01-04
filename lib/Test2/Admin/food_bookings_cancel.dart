@@ -22,12 +22,12 @@ class food_donation_model {
   });
 }
 
-class food_donation_bookings_view_more extends StatefulWidget {
+class food_bookings_cancel extends StatefulWidget {
   @override
-  _food_donation_bookings_view_moreState createState() => _food_donation_bookings_view_moreState();
+  _food_bookings_cancelState createState() => _food_bookings_cancelState();
 }
 
-class _food_donation_bookings_view_moreState extends State<food_donation_bookings_view_more> {
+class _food_bookings_cancelState extends State<food_bookings_cancel> {
 //Applying get request.
 
   Future<List<food_donation_model>> getRequest() async {
@@ -131,7 +131,7 @@ class _food_donation_bookings_view_moreState extends State<food_donation_booking
                                             height: MediaQuery.of(context)
                                                 .size
                                                 .height /
-                                                10,
+                                                6,
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width /
@@ -162,7 +162,7 @@ class _food_donation_bookings_view_moreState extends State<food_donation_booking
                                                           snapshot
                                                               .data[index].food,
                                                     ),
-                                                //   TextButton(onPressed: (){}, child: Text("Cancel",style: TextStyle(fontSize: 18),))
+                                                   TextButton(onPressed: (){}, child: Text("Cancel",style: TextStyle(fontSize: 18),))
 
 
 

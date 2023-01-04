@@ -304,8 +304,8 @@ class _Hope_Admin_RegistrationState extends State<Hope_Admin_Registration> {
 
   Future RegistrationUser() async {
     var APIURL =
-    // "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
-        "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Registration.php";
+     "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
+      //  "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Registration.php";
 
     //json maping user entered details
     Map mapeddate = {

@@ -3,8 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'Hope_Admin_Add_event.dart';
 import 'View_more_Page_food_bookings.dart';
+import 'admin_add_craft_item.dart';
 import 'event_delete_main_page.dart';
 import 'event_edit_main_page.dart';
+import 'food_bookings_cancel.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -103,7 +105,7 @@ class MainDrawer extends StatelessWidget {
         ListTile(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => food_donation_bookings_view_more()));
+                context, MaterialPageRoute(builder: (context) => food_bookings_cancel()));
           },
           leading: Icon(
             Icons.cancel,
@@ -112,18 +114,18 @@ class MainDrawer extends StatelessWidget {
           title: Text("Cancel food bookings",
               style: GoogleFonts.prompt(fontSize: 15)),
         ),
-        // ListTile(
-        //   onTap: () {
-        //     Navigator.push(
-        //         context, MaterialPageRoute(builder: (context) => EventReg()));
-        //   },
-        //   leading: Icon(
-        //     Icons.image,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("Event Registration",
-        //       style: GoogleFonts.prompt(fontSize: 15)),
-        // ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Admin_add_craft_item()));
+          },
+          leading: Icon(
+            Icons.shopping_basket,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Add craft item",
+              style: GoogleFonts.prompt(fontSize: 15)),
+        ),
         //
         // ListTile(
         //   onTap: () {

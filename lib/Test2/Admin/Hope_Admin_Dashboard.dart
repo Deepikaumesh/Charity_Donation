@@ -256,7 +256,7 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (ctx1) => Customer_Login()),
+        MaterialPageRoute(builder: (ctx1) => Hope_Admin_Login()),
         (route) => false);
   }
 }

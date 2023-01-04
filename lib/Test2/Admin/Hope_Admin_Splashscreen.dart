@@ -11,14 +11,14 @@ import 'Hope_Admin_Dashboard.dart';
 
 
 
-class Customer_Splashscreen extends StatefulWidget {
-  _Customer_SplashscreenState createState() => _Customer_SplashscreenState();
+class Admin_Splashscreen extends StatefulWidget {
+  _Admin_SplashscreenState createState() => _Admin_SplashscreenState();
 }
 
-class _Customer_SplashscreenState extends State<Customer_Splashscreen> {
+class _Admin_SplashscreenState extends State<Admin_Splashscreen> {
 
   void initState() {
-    checkCustomerLogedIn();
+    checkAdminLogedIn();
     super.initState();
   }
 
@@ -55,20 +55,20 @@ class _Customer_SplashscreenState extends State<Customer_Splashscreen> {
       ),
     );
   }
-  Future gotoLogin_Customer() async {
+  Future gotoLogin_Admin() async {
     await Future.delayed(Duration(seconds: 1));
-    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Customer_Login()));
+    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Hope_Admin_Login()));
   }
 
 
 
-  Future<void> checkCustomerLogedIn() async{
+  Future<void> checkAdminLogedIn() async{
     final _sharedPrefs =await SharedPreferences.getInstance();
     // print("first key check "+Customer_Key);
     final _userid=_sharedPrefs.getString("useid");
 
     if(_userid == null){
-      gotoLogin_Customer();
+      gotoLogin_Admin();
     }
     else{
       Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_Dashboard()));

@@ -4,21 +4,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 //Creating a class user to store the data;
-class User {
+class food_donation_model {
   // final String id;
   final String id;
-  final String name;
-  final String event_date;
-  final String event_time;
-  final String description;
+  final String date;
+  final String donor;
+  final String food;
 
-  User({
+
+  food_donation_model({
     // required this.id,
     required this.id,
-    required this.name,
-    required this.event_date,
-    required this.event_time,
-    required this.description,
+    required this.date,
+    required this.donor,
+    required this.food,
+
   });
 }
 
@@ -30,25 +30,24 @@ class food_donation_bookings extends StatefulWidget {
 class _food_donation_bookingsState extends State<food_donation_bookings> {
 //Applying get request.
 
-  Future<List<User>> getRequest() async {
+  Future<List<food_donation_model>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/event_Display.php";
+        "http://192.168.29.64/MySampleApp/Charity_Hope/food_donation.php";
 
     final response = await http.get(Uri.parse(url));
 
     var responseData = json.decode(response.body);
 
     //Creating a list to store input data;
-    List<User> users = [];
+    List<food_donation_model> users = [];
     for (var singleUser in responseData) {
-      User user = User(
-        //id:  singleUser["id"].toString(),
+      food_donation_model user = food_donation_model(
         id: singleUser["id"].toString(),
-        name: singleUser["name"].toString(),
-        event_date: singleUser["event_date"].toString(),
-        event_time: singleUser["event_time"].toString(),
-        description: singleUser["description"].toString(),
+        date: singleUser["date"].toString(),
+        donor: singleUser["donor"].toString(),
+        food:singleUser["food"].toString(),
+
       );
 
       //Adding user to the list.
@@ -101,17 +100,17 @@ class _food_donation_bookingsState extends State<food_donation_bookings> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(snapshot.data[index].event_date,
+                          Text(snapshot.data[index].date,
                               style: TextStyle(
                                   color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15)),
-                          Text(snapshot.data[index].name,
+                          Text(snapshot.data[index].donor,
                               style: TextStyle(
                                   color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15)),
-                          Text(snapshot.data[index].event_time,
+                          Text(snapshot.data[index].food,
                               style: TextStyle(
                                   color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold,

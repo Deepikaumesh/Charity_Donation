@@ -1,3 +1,4 @@
+import 'package:chari/Test2/Admin/Hope_Admin_Dashboard.dart';
 import 'package:flutter/material.dart';
 
 import '../Admin/Hope_Admin_Splashscreen.dart';
@@ -24,7 +25,9 @@ class Hope_Main_Way extends StatelessWidget {
                   GestureDetector(
                     onTap: (){
                       //   check_Hope_Admin_LogedIn();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Customer_Splashscreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin_Splashscreen()));
+                  //    Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Admin_Dashboard()));
+
 
                     },
                     child: Column(

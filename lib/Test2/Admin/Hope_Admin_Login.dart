@@ -10,17 +10,17 @@ import '../../main.dart';
 
 
 
-class Customer_Login extends StatefulWidget {
-  const Customer_Login({Key? key}) : super(key: key);
+class Hope_Admin_Login extends StatefulWidget {
+  const Hope_Admin_Login({Key? key}) : super(key: key);
 
   @override
-  _Customer_LoginState createState() => _Customer_LoginState();
+  _Hope_Admin_LoginState createState() => _Hope_Admin_LoginState();
 }
 
-class _Customer_LoginState extends State<Customer_Login> {
-  TextEditingController Cust_user = TextEditingController();
-  TextEditingController Cust_pass = TextEditingController();
-  final GlobalKey<FormState> Cust_formkey = GlobalKey<FormState>();
+class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
+  TextEditingController Admin_user = TextEditingController();
+  TextEditingController Admin_pass = TextEditingController();
+  final GlobalKey<FormState> Admin_formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +52,11 @@ class _Customer_LoginState extends State<Customer_Login> {
                     Container(
                       margin: EdgeInsets.only(left: 35, right: 35),
                       child: Form(
-                        key: Cust_formkey,
+                        key: Admin_formkey,
                         child: Column(
                           children: [
                             TextFormField(
-                              controller: Cust_user,
+                              controller: Admin_user,
                               keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -78,7 +78,7 @@ class _Customer_LoginState extends State<Customer_Login> {
                               height: 30,
                             ),
                             TextFormField(
-                              controller: Cust_pass,
+                              controller: Admin_pass,
                               keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -121,12 +121,12 @@ class _Customer_LoginState extends State<Customer_Login> {
                                         setState(() {
                                           // login();
                                         });
-                                        Cust_Login();
+                                        Admin_Login();
 
-                                        if (Cust_formkey.currentState!.validate()) {
+                                        if (Admin_formkey.currentState!.validate()) {
                                           print("Successfully  logged");
-                                          Cust_user.clear();
-                                          Cust_pass.clear();
+                                          Admin_user.clear();
+                                          Admin_pass.clear();
                                         }
                                       }),
                                 ),
@@ -187,16 +187,17 @@ class _Customer_LoginState extends State<Customer_Login> {
     );
   }
 
-  Future Cust_Login() async {
-    var url ="https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Login.php";//intego wifi password
+  Future Admin_Login() async {
+    //var url ="https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Login.php"; //intego wifi password
+    var url ="http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_login.php";
     var response = await http.post(Uri.parse(url),
         headers: {
           'Accept':'application/json'
         },
 
         body: {
-          "username": Cust_user.text,
-          "password": Cust_pass.text,
+          "username": Admin_user.text,
+          "password": Admin_pass.text,
         });
     var data = json.decode(response.body);
     // if (data.toString() == "Success") {
@@ -205,7 +206,6 @@ class _Customer_LoginState extends State<Customer_Login> {
 
 
       for (var singleUser in data) {
-        // await  SessionManager().set('token', user.text);
         print(singleUser["id"]);
         final _CustomersharedPrefs = await SharedPreferences.getInstance();
         // await _CustomersharedPrefs.setBool(Customer_Key, true);
