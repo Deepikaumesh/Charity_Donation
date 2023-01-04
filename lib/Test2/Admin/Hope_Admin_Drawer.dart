@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Hope_Admin_Add_event.dart';
 import 'View_more_Page_food_bookings.dart';
 import 'admin_add_craft_item.dart';
+import 'admin_remove_craft_page.dart';
 import 'event_delete_main_page.dart';
 import 'event_edit_main_page.dart';
 import 'food_bookings_cancel.dart';
@@ -127,18 +128,18 @@ class MainDrawer extends StatelessWidget {
               style: GoogleFonts.prompt(fontSize: 15)),
         ),
         //
-        // ListTile(
-        //   onTap: () {
-        //     Navigator.push(context,
-        //         MaterialPageRoute(builder: (context) => AdRegistration()));
-        //   },
-        //   leading: Icon(
-        //     Icons.web_asset_sharp,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("Advertaisement Registration",
-        //       style: GoogleFonts.prompt(fontSize: 15)),
-        // ),
+        ListTile(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Admin_remove_Craftitem_page()));
+          },
+          leading: Icon(
+            Icons.remove_circle_outline_rounded,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Remove craft item",
+              style: GoogleFonts.prompt(fontSize: 15)),
+        ),
         // ListTile(
         //   onTap: () {
         //     Navigator.push(context,

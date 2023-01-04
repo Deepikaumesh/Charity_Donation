@@ -9,6 +9,7 @@ import '../Screen/Hope_main_way.dart';
 import 'Hope_Admin_Drawer.dart';
 import 'Hope_Admin_View_events.dart';
 import 'View_more_Page_food_bookings.dart';
+import 'admin_view_craft.dart';
 
 class Hope_Admin_Dashboard extends StatefulWidget {
   const Hope_Admin_Dashboard({Key? key}) : super(key: key);
@@ -227,16 +228,21 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
               SizedBox(
                 height: 5,
               ),
-              Container(
-                height: 120,
-                width: MediaQuery.of(context).size.width / 1.2,
-                decoration: BoxDecoration(
-                    //border: Border.all(width: 0.5),
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.yellow,
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/crafts.jpg"),
-                        fit: BoxFit.cover)),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin_View_Craftitem_()));
+                },
+                child: Container(
+                  height: 120,
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  decoration: BoxDecoration(
+                      //border: Border.all(width: 0.5),
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.yellow,
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/crafts.jpg"),
+                          fit: BoxFit.cover)),
+                ),
               ),
               SizedBox(
                 height: 10,
