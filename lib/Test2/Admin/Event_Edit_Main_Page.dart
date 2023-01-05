@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'Hope_Admin_Edit_event.dart';
+import 'Edit_event.dart';
 
 //Creating a class user to store the data;
 class event_data_model {

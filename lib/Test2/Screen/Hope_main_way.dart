@@ -1,4 +1,4 @@
-import 'package:chari/Test2/Admin/Hope_Admin_Dashboard.dart';
+import 'package:chari/Test2/Admin/Dashboard.dart';
 import 'package:flutter/material.dart';
 
 import '../Admin/Hope_Admin_Splashscreen.dart';

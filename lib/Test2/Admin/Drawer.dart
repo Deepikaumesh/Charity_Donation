@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Hope_Admin_Add_event.dart';
+import 'Add_event.dart';
 import 'View_more_Page_food_bookings.dart';
-import 'admin_add_craft_item.dart';
-import 'admin_remove_craft_page.dart';
-import 'event_delete_main_page.dart';
-import 'event_edit_main_page.dart';
-import 'food_bookings_cancel.dart';
+import 'Add_Craft_Item.dart';
+import 'Remove_Craft_Page.dart';
+import 'Event_Delete_Main_Page.dart';
+import 'Event_Edit_Main_Page.dart';
+import 'Food_Bookings_Cancel.dart';
 
 class MainDrawer extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:chari/Test2/Admin/Hope_Admin_Dashboard.dart';
-import 'package:chari/Test2/Admin/Hope_Admin_Registration.dart';
+import 'package:chari/Test2/Admin/Dashboard.dart';
+import 'package:chari/Test2/Admin/Registration.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;

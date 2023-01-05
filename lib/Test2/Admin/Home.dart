@@ -1,15 +1,15 @@
-import 'package:chari/Test2/Admin/Hope_Admin_Login.dart';
-import 'package:chari/Test2/Admin/food_donation_bookings.dart';
+import 'package:chari/Test2/Admin/Login.dart';
+import 'package:chari/Test2/Admin/Food_Donation_Bookings.dart';
 import 'package:chari/Test2/Admin/view_donations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/Hope_main_way.dart';
-import 'Hope_Admin_Drawer.dart';
-import 'Hope_Admin_View_events.dart';
+import 'Drawer.dart';
+import 'View_events.dart';
 import 'View_more_Page_food_bookings.dart';
-import 'admin_view_craft.dart';
+import 'View_Craft.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                   //border: Border.all(width: 0.5,color: Colors.pink),
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
-                        image: AssetImage("assets/images/orphan.jpg"),
+                        image: AssetImage("assets/images/e1.jpg"),
                         fit: BoxFit.cover)),
               ),
               SizedBox(
@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
                               borderRadius: BorderRadius.circular(8),
                               color: Colors.yellow,
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/events.jpg"),
+                                  image: AssetImage("assets/images/ev1.jpg"),
                                   fit: BoxFit.cover)),
                         ),
                       ),
@@ -130,8 +130,9 @@ class _HomeState extends State<Home> {
                               color: Colors.yellow,
                               image: DecorationImage(
                                   image:
-                                  AssetImage("assets/images/donation.jpg"),
-                                  fit: BoxFit.cover)),
+                                  AssetImage("assets/images/main.jpg"),
+                                  fit: BoxFit.fill)
+                          ),
                         ),
                       ),
                       Text(

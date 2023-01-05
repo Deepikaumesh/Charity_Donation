@@ -1,5 +1,5 @@
-import 'package:chari/Test2/Admin/Hope_Admin_Login.dart';
-import 'package:chari/Test2/Admin/food_donation_bookings.dart';
+import 'package:chari/Test2/Admin/Login.dart';
+import 'package:chari/Test2/Admin/Food_Donation_Bookings.dart';
 import 'package:chari/Test2/Admin/view_donations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/Hope_main_way.dart';
 import 'Home.dart';
-import 'Hope_Admin_Drawer.dart';
-import 'Hope_Admin_View_events.dart';
+import 'Drawer.dart';
+import 'View_events.dart';
 import 'View_more_Page_food_bookings.dart';
-import 'admin_view_craft.dart';
+import 'View_Craft.dart';
 
 class Hope_Admin_Dashboard extends StatefulWidget {
   const Hope_Admin_Dashboard({Key? key}) : super(key: key);
@@ -26,7 +26,8 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
     Home(),
     Hope_Admin_event_Display(),
     donation_Display(),
-    food_donation_bookings_view_more(),
+    Admin_View_Craftitem_(),
+
 
 
   ];
@@ -272,9 +273,10 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
       // ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // disable the animation
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
+        backgroundColor: Colors.white,
+        elevation: 4,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
       //  iconSize: 40,
         selectedFontSize: 15,
         unselectedFontSize: 13,
@@ -284,24 +286,24 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'home',
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.emoji_events),
+            label: 'events',
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.monetization_on_rounded),
+            label: 'donations',
             backgroundColor: Colors.blue,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.blue,
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.home),
+          //   label: 'craft ',
+          //   backgroundColor: Colors.blue,
+          // ),
         ],
       ),
     );

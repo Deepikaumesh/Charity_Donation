@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:ui';
 
 
-import 'package:chari/Test2/Admin/Hope_Admin_Login.dart';
+import 'package:chari/Test2/Admin/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Hope_Admin_Dashboard.dart';
+import 'Dashboard.dart';
 
 
 

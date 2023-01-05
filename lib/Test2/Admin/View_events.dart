@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import 'View_event_detail_page.dart';
+
 //Creating a class user to store the data;
 class event_data_model {
   final String id;
@@ -61,11 +63,12 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     },
+        //     icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.pink.shade300,
         centerTitle: true,
         title: Text(
@@ -175,7 +178,10 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                                                   ),
                                                   SizedBox(width: 10,),
                                                   Text("details"),
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                  IconButton(onPressed: (){
+                                                    Navigator.push(context, MaterialPageRoute
+                                                      (builder: (context)=>View_Event_Detail_Page(data_event: snapshot.data[index],)));
+                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded))
                                                 ],  ),
 
                                             ),
