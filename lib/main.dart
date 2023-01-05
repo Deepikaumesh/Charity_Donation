@@ -14,6 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData(
+      //
+      //   splashColor: Colors.transparent,
+      //
+      //   highlightColor: Colors.transparent,
+      //
+      //   hoverColor: Colors.transparent,
+      //
+      // ),
       debugShowCheckedModeBanner: false,
       home: Hope_Main_Way(),
     );

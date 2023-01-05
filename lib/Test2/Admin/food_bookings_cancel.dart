@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import 'Hope_Admin_Dashboard.dart';
+
 //Creating a class user to store the data;
 class food_donation_model {
   // final String id;
@@ -167,7 +169,37 @@ class _food_bookings_cancelState extends State<food_bookings_cancel> {
                                                           snapshot
                                                               .data[index].food,
                                                     ),
-                                                   TextButton(onPressed: (){}, child: Text("Cancel",style: TextStyle(fontSize: 18),))
+                                                   TextButton(onPressed: (){
+                                                     showDialog(
+                                                         context: context,
+                                                         builder: (_) {
+                                                           return AlertDialog(
+                                                             shape: RoundedRectangleBorder(
+                                                               borderRadius: BorderRadius.circular(16),
+                                                             ),
+                                                             title: Text("Delete Product!"),
+                                                             content: Text(
+                                                                 "Are you sure want to delete the Product from stock?"),
+                                                             actions: [
+                                                               TextButton(
+                                                                   onPressed: () {
+                                                                     setState(() {
+                                                                       cancel_food(
+                                                                           snapshot.data[index].id);
+                                                                     });
+                                                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>Hope_Admin_Dashboard ()));
+                                                                   },
+                                                                   child: Text("ok")),
+                                                               TextButton(
+                                                                   onPressed: () {
+                                                                     Navigator.pop(context);
+                                                                   },
+                                                                   child: Text("cancel")),
+                                                             ],
+                                                           );
+                                                         });
+
+                                                   }, child: Text("Cancel",style: TextStyle(fontSize: 18,color: Colors.cyan.shade800),))
 
 
 
@@ -204,5 +236,22 @@ class _food_bookings_cancelState extends State<food_bookings_cancel> {
         ),
       ),
     );
+  }
+  Future<void> cancel_food(String id) async {
+    String url =
+        "http://192.168.29.64/MySampleApp/Charity_Hope/cancel_food_bookings.php";
+    var res = await http.post(Uri.parse(url), body: {
+      "id": id,
+    });
+    var resoponse = jsonDecode(res.body);
+    if (resoponse["success"] == "true") {
+      print(id);
+      // setState(() {
+      getRequest();
+      // });
+
+    } else {
+      print("some issue");
+    }
   }
 }

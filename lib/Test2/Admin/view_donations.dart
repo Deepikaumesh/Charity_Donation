@@ -121,13 +121,17 @@ class _donation_DisplayState extends State<donation_Display> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10, vertical: 2),
                                         child: Card(
-                                          shadowColor: Colors.red,
+
+
+                                          color: Colors.cyan.shade50,
+                                          //shadowColor: Colors.red,
                                           elevation: 8,
                                           clipBehavior: Clip.antiAlias,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                             BorderRadius.circular(10),
                                           ),
+
                                           child: Container(
                                             // color: Colors.red,
                                             height: MediaQuery.of(context)
@@ -138,51 +142,47 @@ class _donation_DisplayState extends State<donation_Display> {
                                                 .size
                                                 .width /
                                                 1.2,
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 15, 50, 15),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
+                                            //padding: EdgeInsets.fromLTRB(10, 15, 50, 15),
+                                            child: ListTile(
+                                              contentPadding: EdgeInsets.all(15.0),
+                                              // leading: Container(
+                                              //   height: 50,
+                                              //   width: 50,
+                                              //   decoration: BoxDecoration(
+                                              //     shape: BoxShape.circle,
+                                              //     border: Border.all(color: Colors.red.shade900),
+                                              //     image: DecorationImage(
+                                              //       image: NetworkImage(snapshot.data[index].image),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              title: Row(
+                                                children:[
+                                                  Text("Donor name:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].name,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style:
+                                                    GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
+                                                  ),
+                                                ],
+                                              ),
+                                              subtitle: Row(
+                                                children:[
+                                                  Text("Donor Place:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].place,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style:
+                                                    GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
+                                                  ),
+                                                  SizedBox(width: 10,),
+                                                  Text("details"),
+                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                ],  ),
 
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "Name : " +
-                                                          snapshot
-                                                              .data[index].name,
-                                                    ),
-                                                    Text(
-                                                      "Place : " +
-                                                          snapshot
-                                                              .data[index].place,
-                                                    ),
-                                                    Text(
-                                                      "Phone No : " +
-                                                          snapshot
-                                                              .data[index].phone,
-                                                    ),
-                                                    Text(
-                                                      "Amount : " +
-                                                          snapshot
-                                                              .data[index].amount,
-                                                    ),
-
-
-
-
-
-
-
-                                                  ],
-                                                ),
-                                                //SizedBox(width: 160,),
-
-                                                //IconButton(onPressed: (){}, icon: Icon(Icons.edit_note,size: 20,)),
-                                              ],
                                             ),
+
                                           ),
                                         ),
                                       ),
@@ -196,6 +196,7 @@ class _donation_DisplayState extends State<donation_Display> {
                         ),
                       ],
                     ),
+
                   );
                 }
               },

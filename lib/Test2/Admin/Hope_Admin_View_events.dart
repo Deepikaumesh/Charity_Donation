@@ -118,124 +118,68 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10, vertical: 2),
                                         child: Card(
-                                          shadowColor: Colors.red,
+
+
+                                          color: Colors.cyan.shade50,
+                                          //shadowColor: Colors.red,
                                           elevation: 8,
                                           clipBehavior: Clip.antiAlias,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                           ),
+
                                           child: Container(
                                             // color: Colors.red,
                                             height: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                15,
+                                                .size
+                                                .height /
+                                                8.5,
                                             width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
+                                                .size
+                                                .width /
                                                 1.2,
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 15, 50, 15),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "Event Name : " +
-                                                          snapshot
-                                                              .data[index].name,
-                                                    ),
-                                                    // Text(
-                                                    //   "Event date : " +
-                                                    //       snapshot.data[index].event_date,
-                                                    // ),
-                                                    //
-                                                    //
-                                                    // Text(
-                                                    //   "Event time : " +
-                                                    //       snapshot.data[index]
-                                                    //           .event_time,
-                                                    // ),
-                                                    // Text(
-                                                    //   "Description : " +
-                                                    //       snapshot.data[index]
-                                                    //           .description,
-                                                    // ),
-
-                                                    // IconButton(
-                                                    //     onPressed: () {
-                                                    //       showDialog(
-                                                    //           context:
-                                                    //               context,
-                                                    //           builder: (_) {
-                                                    //             return AlertDialog(
-                                                    //               shape:
-                                                    //                   RoundedRectangleBorder(
-                                                    //                 borderRadius:
-                                                    //                     BorderRadius.circular(
-                                                    //                         16),
-                                                    //               ),
-                                                    //               title: Text(
-                                                    //                 "Remove item",
-                                                    //                 style: TextStyle(
-                                                    //                     color: Colors
-                                                    //                         .pink
-                                                    //                         .shade500),
-                                                    //               ),
-                                                    //               content: Text(
-                                                    //                   "Are You sure want to remove the product from cart"),
-                                                    //               actions: [
-                                                    //                 TextButton(
-                                                    //                   onPressed:
-                                                    //                       () {
-                                                    //                     setState(
-                                                    //                         () {
-                                                    //                       delrecord(snapshot.data[index].id);
-                                                    //                     });
-                                                    //                     Navigator.pushReplacement(
-                                                    //                         context,
-                                                    //                         MaterialPageRoute(builder: (context) => Hope_Admin_event_Display()));
-                                                    //                   },
-                                                    //                   child: Text(
-                                                    //                       "ok",
-                                                    //                       style:
-                                                    //                           TextStyle(
-                                                    //                         color: Colors.pink.shade500,
-                                                    //                       )),
-                                                    //                 ),
-                                                    //                 TextButton(
-                                                    //                   onPressed:
-                                                    //                       () {
-                                                    //                     Navigator.pop(
-                                                    //                         context);
-                                                    //                   },
-                                                    //                   child: Text(
-                                                    //                       "cancel",
-                                                    //                       style:
-                                                    //                           TextStyle(color: Colors.pink.shade500)),
-                                                    //                 ),
-                                                    //               ],
-                                                    //             );
-                                                    //           });
-                                                    //     },
-                                                    //     icon: Icon(
-                                                    //         Icons.clear,
-                                                    //         size: 20,
-                                                    //         color: Colors.red
-                                                    //             .shade900)),
-                                                  ],
+                                            //padding: EdgeInsets.fromLTRB(10, 15, 50, 15),
+                                            child: ListTile(
+                                              contentPadding: EdgeInsets.all(15.0),
+                                              // leading: Container(
+                                              //   height: 50,
+                                              //   width: 50,
+                                              //   decoration: BoxDecoration(
+                                              //     shape: BoxShape.circle,
+                                              //     border: Border.all(color: Colors.red.shade900),
+                                              //     image: DecorationImage(
+                                              //       image: NetworkImage(snapshot.data[index].image),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              title: Row(
+                                                children:[
+                                                  Text("Event name:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].name,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style:
+                                                  GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
                                                 ),
-                                                //SizedBox(width: 160,),
-
-                                                //IconButton(onPressed: (){}, icon: Icon(Icons.edit_note,size: 20,)),
                                               ],
+                                              ),
+                                              subtitle: Row(
+                                                children:[
+                                                  Text("Event date:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].event_date,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style:
+                                                    GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
+                                                  ),
+                                                  SizedBox(width: 10,),
+                                                  Text("details"),
+                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                ],  ),
+
                                             ),
+
                                           ),
                                         ),
                                       ),
@@ -249,6 +193,7 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                         ),
                       ],
                     ),
+
                   );
                 }
               },
@@ -277,3 +222,67 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
     }
   }
 }
+
+
+// child: Column(
+//   children: [
+//     Flexible(
+//       child: ListView.builder(
+//           shrinkWrap: true,
+//           itemCount: snapshot.data.length,
+//           itemBuilder: (ctx, index) {
+//             return SingleChildScrollView(
+//               scrollDirection: Axis.horizontal,
+//               child: Column(
+//                 children: [
+//                   Padding(
+//                     padding: EdgeInsets.symmetric(
+//                         horizontal: 10, vertical: 2),
+//                     child: Card(
+//                       shadowColor: Colors.red,
+//                       elevation: 8,
+//                       clipBehavior: Clip.antiAlias,
+//                       shape: RoundedRectangleBorder(
+//                         borderRadius:
+//                             BorderRadius.circular(10),
+//                       ),
+//                       child: Container(
+//                         // color: Colors.red,
+//                         height: MediaQuery.of(context)
+//                                 .size
+//                                 .height /
+//                             15,
+//                         width: MediaQuery.of(context)
+//                                 .size
+//                                 .width /
+//                             1.2,
+//                         padding: EdgeInsets.fromLTRB(
+//                             10, 15, 50, 15),
+//                         child: Row(
+//                           crossAxisAlignment:
+//                               CrossAxisAlignment.start,
+//                           children: [
+//
+//                             Text(
+//                               "Event Name : " +
+//                                   snapshot
+//                                       .data[index].name,
+//                             ),
+//                             //SizedBox(width: 160,),
+//
+//
+//                           ],
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     height: 20,
+//                   ),
+//                 ],
+//               ),
+//             );
+//           }),
+//     ),
+//   ],
+// ),

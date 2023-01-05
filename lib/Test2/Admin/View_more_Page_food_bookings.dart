@@ -119,65 +119,68 @@ class _food_donation_bookings_view_moreState extends State<food_donation_booking
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10, vertical: 2),
                                         child: Card(
-                                          shadowColor: Colors.red,
+
+
+                                          color: Colors.cyan.shade50,
+                                          //shadowColor: Colors.red,
                                           elevation: 8,
                                           clipBehavior: Clip.antiAlias,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                             BorderRadius.circular(10),
                                           ),
+
                                           child: Container(
                                             // color: Colors.red,
                                             height: MediaQuery.of(context)
                                                 .size
                                                 .height /
-                                                10,
+                                                8.5,
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width /
                                                 1.2,
-                                            padding: EdgeInsets.fromLTRB(
-                                                10, 15, 50, 15),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
+                                            //padding: EdgeInsets.fromLTRB(10, 15, 50, 15),
+                                            child: ListTile(
+                                              contentPadding: EdgeInsets.all(15.0),
+                                              // leading: Container(
+                                              //   height: 50,
+                                              //   width: 50,
+                                              //   decoration: BoxDecoration(
+                                              //     shape: BoxShape.circle,
+                                              //     border: Border.all(color: Colors.red.shade900),
+                                              //     image: DecorationImage(
+                                              //       image: NetworkImage(snapshot.data[index].image),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              title: Row(
+                                                children:[
+                                                  Text("Donor name:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].donor,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style:
+                                                    GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
+                                                  ),
+                                                ],
+                                              ),
+                                              subtitle: Row(
+                                                children:[
+                                                  Text("Date:"),
+                                                  SizedBox(width: 10,),
+                                                  Text(snapshot.data[index].date,
+                                                    overflow: TextOverflow.ellipsis,
+                                                    style:
+                                                    GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
+                                                  ),
+                                                  SizedBox(width: 10,),
+                                                  Text("details"),
+                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                ],  ),
 
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "Date : " +
-                                                          snapshot
-                                                              .data[index].date,
-                                                    ),
-                                                    Text(
-                                                      "Donor : " +
-                                                          snapshot
-                                                              .data[index].donor,
-                                                    ),
-                                                    Text(
-                                                      "Food : " +
-                                                          snapshot
-                                                              .data[index].food,
-                                                    ),
-                                                //   TextButton(onPressed: (){}, child: Text("Cancel",style: TextStyle(fontSize: 18),))
-
-
-
-
-
-
-
-
-                                                  ],
-                                                ),
-                                                //SizedBox(width: 160,),
-
-                                                //IconButton(onPressed: (){}, icon: Icon(Icons.edit_note,size: 20,)),
-                                              ],
                                             ),
+
                                           ),
                                         ),
                                       ),
@@ -191,6 +194,7 @@ class _food_donation_bookings_view_moreState extends State<food_donation_booking
                         ),
                       ],
                     ),
+
                   );
                 }
               },
