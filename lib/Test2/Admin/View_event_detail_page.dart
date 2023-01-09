@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import 'Add_event.dart';
 import 'View_events.dart';
-
-
 
 class View_Event_Detail_Page extends StatefulWidget {
   final event_data_model data_event;
@@ -33,64 +33,126 @@ class _View_Event_Detail_PageState extends State<View_Event_Detail_Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children:[ Container(
-                // color: Colors.red.shade50,
-                height: MediaQuery.of(context).size.height,
-
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  "assets/images/ev1.jpg",
-                  height: 200,
-                  width: 150,
-                  fit: BoxFit.fitHeight,
-                ),),
+        children: [
           Padding(
-            padding: EdgeInsets.only(top: 300,left: 20,right: 20),
+            padding: EdgeInsets.only(bottom: 400),
             child: Container(
+              // color: Colors.red.shade50,
+              height: MediaQuery.of(context).size.height,
+
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(
+                "assets/images/e4.png",
+                height: 200,
+                width: 150,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 130, left: 100, right: 100),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+              margin: EdgeInsets.all(20),
+              height: 50,
+              width: 300,
+              //color: Colors.white,
+              child: Text(
+                "Events",
+                style: GoogleFonts.prompt(
+                    fontSize: 25, color: Colors.red.shade800),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 400, left: 20, right: 20),
+            child: Container(
+              padding: EdgeInsets.all(20),
               height: 400,
               width: 350,
               decoration: BoxDecoration(
-
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(70),topLeft: Radius.circular(70))
+                  color: Colors.red.shade300,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(50),
+                      topLeft: Radius.circular(50))),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(widget.data_event.name,
+                      style: GoogleFonts.prompt(color: Colors.white,fontSize: 25)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        widget.data_event.event_date,
+                        style: GoogleFonts.prompt(color: Colors.white),
+                      ),
+                      Text(widget.data_event.event_time,
+                          style: GoogleFonts.prompt(color: Colors.white))
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Text(
+                      widget.data_event.description,style: GoogleFonts.prompt(color: Colors.white,),
+                  textAlign: TextAlign.justify,
+                  )
+                ],
               ),
-
-
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 730,left: 200),
-          child:Container(
-            height: 60,
-            width: 170,
-            decoration: BoxDecoration(
-              color: Colors.pink.shade300,
-              borderRadius: BorderRadius.circular(30)
-            ),
-           
-            child: TextButton(onPressed: (){},
-              child: Text("Add event",style: TextStyle(fontSize: 20,color: Colors.white),),),
-          )
-          // ElevatedButton(
-          //   style: ElevatedButton.styleFrom(
-          //     shape: StadiumBorder(),
-          //     backgroundColor: Colors.pink.shade200,
-          //
-          //   ),
-          //   onPressed: () {
-          //     }, child: Container(
-          // //color: Colors.red,
-          //   padding: EdgeInsets.only(top: 15,left: 30,right: 30,bottom: 15),
-          //     height: 65,
-          //     width: 200,
-          //     child: Text("Add event",style: TextStyle(fontSize: 25),)),
-          //
-          //
-          // ),
-          )
-    ],
+          Padding(
+              padding: EdgeInsets.only(top: 755, left: 320),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Hope_Admin_event_registration()));
+                },
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.red.shade800,
+                ),
+              )
+              // Container(
+              //   height: 60,
+              //   width: 170,
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(30)
+              //   ),
+              //
+              //   child: TextButton(onPressed: (){},
+              //     child: Text("Add event",style: TextStyle(fontSize: 20,),),),
+              // )
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //     shape: StadiumBorder(),
+              //     backgroundColor: Colors.pink.shade200,
+              //
+              //   ),
+              //   onPressed: () {
+              //     }, child: Container(
+              // //color: Colors.red,
+              //   padding: EdgeInsets.only(top: 15,left: 30,right: 30,bottom: 15),
+              //     height: 65,
+              //     width: 200,
+              //     child: Text("Add event",style: TextStyle(fontSize: 25),)),
+              //
+              //
+              // ),
+              )
+        ],
       ),
     );
-   // )
+    // )
     //   Column(
     //   children: [
     //     Container(

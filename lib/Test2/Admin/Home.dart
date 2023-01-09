@@ -4,8 +4,6 @@ import 'package:chari/Test2/Admin/view_donations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Screen/Hope_main_way.dart';
 import 'Drawer.dart';
 import 'View_events.dart';
 import 'View_more_Page_food_bookings.dart';
@@ -47,6 +45,9 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+
+
+              SizedBox(height: 20,),
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width / 1.1,
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> {
                   //border: Border.all(width: 0.5,color: Colors.pink),
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
-                        image: AssetImage("assets/images/e1.jpg"),
+                        image: AssetImage("assets/images/k.jpg"),
                         fit: BoxFit.cover)),
               ),
               SizedBox(
@@ -96,9 +97,9 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                             // border: Border.all(width: 0.5),
                               borderRadius: BorderRadius.circular(8),
-                              color: Colors.yellow,
+                           //   color: Colors.yellow,
                               image: DecorationImage(
-                                  image: AssetImage("assets/images/ev1.jpg"),
+                                  image: AssetImage("assets/images/e2.png"),
                                   fit: BoxFit.cover)),
                         ),
                       ),
