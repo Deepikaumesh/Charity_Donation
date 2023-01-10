@@ -42,9 +42,9 @@ class _Admin_SplashscreenState extends State<Admin_Splashscreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "welcome",
+            "Fetching all the details....",
             style: GoogleFonts.aclonica(
-              color: Colors.red.shade900,
+              color: Colors.pink.shade300,
               fontSize: 11.0,
               fontWeight: FontWeight.w600,
             ),

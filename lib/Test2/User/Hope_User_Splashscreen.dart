@@ -49,14 +49,14 @@ class _Hope_User_SplashState extends State<Hope_User_Splash> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircularProgressIndicator(
-            color: Colors.red.shade900,
+            color: Colors.pink.shade300,
             strokeWidth: 5,
           ),
           SizedBox(height: 20,),
           Text(
             "Fetching all the details....",
             style: GoogleFonts.aclonica(
-              color: Colors.red.shade900,
+              color: Colors.pink.shade300,
               fontSize: 11.0,
               fontWeight: FontWeight.w600,
             ),

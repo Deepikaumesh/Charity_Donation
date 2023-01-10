@@ -22,9 +22,9 @@ class MainDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 60.0,
+                  radius: 70.0,
                   backgroundImage: AssetImage(
-                    "assets/images/orphans.png",
+                    "assets/images/orphans.jpg",
                   ),
                 ),
                 // SizedBox(

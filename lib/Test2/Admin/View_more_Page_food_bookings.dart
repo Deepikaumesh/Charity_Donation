@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import 'food_donation_details_page.dart';
+
 //Creating a class user to store the data;
 class food_donation_model {
   // final String id;
@@ -176,7 +178,11 @@ class _food_donation_bookings_view_moreState extends State<food_donation_booking
                                                   ),
                                                   SizedBox(width: 10,),
                                                   Text("details"),
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                  IconButton(onPressed: (){
+                                                    Navigator.pushReplacement(context,
+                                                        MaterialPageRoute(builder: (context)=>
+                                                            View_food_donation_Detail_Page(data_food_donation:snapshot.data[index])));
+                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded))
                                                 ],  ),
 
                                             ),

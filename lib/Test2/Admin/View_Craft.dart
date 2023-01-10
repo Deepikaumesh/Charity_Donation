@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import 'craft_Shop_detail_page.dart';
+
 class craft_model {
   final String id;
   final String name;
@@ -136,7 +138,11 @@ class _Admin_View_Craftitem_State extends State<Admin_View_Craftitem_> {
                                                           ),
                                                   SizedBox(width: 10,),
                                                   Text("details"),
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                  IconButton(onPressed: (){
+                                                    Navigator.pushReplacement(context, 
+                                                        MaterialPageRoute(builder:
+                                                            (context)=>View_craft_shop_Detail_Page(data_craft: snapshot.data[index],)));
+                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded))
                                             ],  ),
 
                                             ),

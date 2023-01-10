@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:chari/Test2/Admin/view_donation_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -179,7 +180,17 @@ class _donation_DisplayState extends State<donation_Display> {
                                                   ),
                                                   SizedBox(width: 10,),
                                                   Text("details"),
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                  IconButton(onPressed: (){
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder:
+                                                                (context) =>
+                                                                    View_Donation_Detail_Page(donation_data: snapshot.data[index],
+
+
+                                                                )));
+                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded))
                                                 ],  ),
 
                                             ),

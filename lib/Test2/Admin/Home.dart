@@ -128,7 +128,7 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                             //border: Border.all(width: 0.5),
                               borderRadius: BorderRadius.circular(8),
-                              color: Colors.yellow,
+                         //     color: Colors.yellow,
                               image: DecorationImage(
                                   image:
                                   AssetImage("assets/images/main.jpg"),
@@ -249,9 +249,9 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(
                     //border: Border.all(width: 0.5),
                       borderRadius: BorderRadius.circular(8),
-                      color: Colors.yellow,
+                   //   color: Colors.yellow,
                       image: DecorationImage(
-                          image: AssetImage("assets/images/crafts.jpg"),
+                          image: AssetImage("assets/images/c2.jpg"),
                           fit: BoxFit.cover)),
                 ),
               ),
