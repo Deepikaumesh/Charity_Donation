@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'package:chari/Test2/Admin/Dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'Drawer.dart';
-
+import 'Edit_event_Admin.dart';
 
 //Creating a class user to store the data;
 class event_data_model {
@@ -25,14 +23,14 @@ class event_data_model {
   });
 }
 
-class Hope_Admin_event_Display_delete_page extends StatefulWidget {
+class Hope_Admin_event_Display_edit_page extends StatefulWidget {
   @override
-  _Hope_Admin_event_Display_delete_pageState createState() =>
-      _Hope_Admin_event_Display_delete_pageState();
+  _Hope_Admin_event_Display_edit_pageState createState() =>
+      _Hope_Admin_event_Display_edit_pageState();
 }
 
-class _Hope_Admin_event_Display_delete_pageState
-    extends State<Hope_Admin_event_Display_delete_page> {
+class _Hope_Admin_event_Display_edit_pageState
+    extends State<Hope_Admin_event_Display_edit_page> {
   //Applying get request.
   Future<List<event_data_model>> getRequest() async {
     //replace your restFull API here.
@@ -66,7 +64,7 @@ class _Hope_Admin_event_Display_delete_pageState
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Delete Event",
+          "Edit Event",
           style: GoogleFonts.prompt(color: Colors.pink.shade300),
         ),
         backgroundColor: Colors.white,
@@ -126,92 +124,75 @@ class _Hope_Admin_event_Display_delete_pageState
                                       Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 10, vertical: 2),
-
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Hope_Admin_Edit_event(
+                                                          data_user: snapshot
+                                                              .data[index],
+                                                        )));
+                                          },
                                           child: Card(
                                             shadowColor: Colors.red,
                                             elevation: 8,
                                             clipBehavior: Clip.antiAlias,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(10),
+                                                  BorderRadius.circular(10),
                                             ),
                                             child: Container(
                                               // color: Colors.red,
                                               height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                                  13,
+                                                      .size
+                                                      .height /
+                                                  15,
                                               width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
+                                                      .size
+                                                      .width /
                                                   1.2,
                                               padding: EdgeInsets.fromLTRB(
-                                                  5, 5, 50, 15),
+                                                  10, 15, 50, 15),
                                               child: Row(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  //
-                                                  // SizedBox(
-                                                  //   width: 10,
-                                                  // ),
-                                                 IconButton(onPressed: (){
-                                                   // setState(() {
-                                                   //   delrecord(
-                                                   //       snapshot.data[index].id);
-                                                   // });
-                                                   showDialog(
-                                                       context: context,
-                                                       builder: (_) {
-                                                         return AlertDialog(
-                                                           shape: RoundedRectangleBorder(
-                                                             borderRadius: BorderRadius.circular(16),
-                                                           ),
-                                                           title: Text("Delete Product!"),
-                                                           content: Text(
-                                                               "Are you sure want to delete the Product from stock?"),
-                                                           actions: [
-                                                             TextButton(
-                                                                 onPressed: () {
-                                                                   setState(() {
-                                                                     delrecord(
-                                                                         snapshot.data[index].id);
-                                                                   });
-                                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) =>Hope_Admin_Dashboard ()));
-                                                                 },
-                                                                 child: Text("ok")),
-                                                             TextButton(
-                                                                 onPressed: () {
-                                                                   Navigator.pop(context);
-                                                                 },
-                                                                 child: Text("cancel")),
-                                                           ],
-                                                         );
-                                                       });
-
-                                                 }, icon: Icon(Icons.delete,size: 30,color: Colors.red.shade900,),),
-
-                                                // Icon(Icons.delete,size: 18,color: Colors.red.shade900,),
+                                                  GestureDetector(
+                                                    child: Icon(
+                                                      Icons.edit,
+                                                      color: Colors.red,
+                                                      size: 20,
+                                                    ),
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  Hope_Admin_Edit_event(
+                                                                    data_user:
+                                                                        snapshot
+                                                                            .data[index],
+                                                                  )));
+                                                    },
+                                                  ),
+                                                  // Text("Edit",
+                                                  //     style: GoogleFonts.adamina(
+                                                  //         color: Colors.red,)),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
 
                                                   Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
-                                                      SizedBox(height: 10,),
                                                       Text(
                                                         "Event Name : " +
                                                             snapshot.data[index]
                                                                 .name,
-                                                      ),
-                                                      SizedBox(height: 5,),
-                                                      Text(
-                                                        "Event date: " +
-                                                            snapshot.data[index]
-                                                                .event_date,style: TextStyle(fontSize: 10),
                                                       ),
                                                     ],
                                                   ),
@@ -220,7 +201,7 @@ class _Hope_Admin_event_Display_delete_pageState
                                             ),
                                           ),
                                         ),
-
+                                      ),
                                     ],
                                   ),
                                 );
@@ -238,23 +219,4 @@ class _Hope_Admin_event_Display_delete_pageState
     );
   }
 
-  Future<void> delrecord(String id) async {
-    String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/event_delete.php";
-    var res = await http.post(Uri.parse(url), body: {
-      "id": id,
-    });
-    var resoponse = jsonDecode(res.body);
-    if (resoponse["success"] == "true") {
-      print(id);
-       setState(() {
-      getRequest();
-       });
-
-
-
-    } else {
-      print("some issue");
-    }
-  }
 }

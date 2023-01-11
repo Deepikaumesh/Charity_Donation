@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class Hope_User_Registration extends StatefulWidget {
-  const Hope_User_Registration({Key? key}) : super(key: key);
+class Hope_Admin_Registration extends StatefulWidget {
+  const Hope_Admin_Registration({Key? key}) : super(key: key);
 
   @override
-  _Hope_User_RegistrationState createState() => _Hope_User_RegistrationState();
+  _Hope_Admin_RegistrationState createState() => _Hope_Admin_RegistrationState();
 }
 
-class _Hope_User_RegistrationState extends State<Hope_User_Registration> {
+class _Hope_Admin_RegistrationState extends State<Hope_Admin_Registration> {
   TextEditingController _username = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _phone = TextEditingController();
@@ -285,7 +285,7 @@ class _Hope_User_RegistrationState extends State<Hope_User_Registration> {
                                   )
                                 ],
                               ),
-                              Text(status ? message : message),
+                              Text(status ? message : message,style: TextStyle(color: Colors.red.shade900),),
 
                             ],
                           ),
@@ -303,8 +303,9 @@ class _Hope_User_RegistrationState extends State<Hope_User_Registration> {
   }
 
   Future RegistrationUser() async {
-    var APIURL ="http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
-        //"https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Registration.php";
+    var APIURL =
+     "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
+      //  "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Registration.php";
 
     //json maping user entered details
     Map mapeddate = {

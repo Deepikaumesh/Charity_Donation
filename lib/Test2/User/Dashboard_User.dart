@@ -1,36 +1,29 @@
-import 'package:chari/Test2/Admin/Login.dart';
-import 'package:chari/Test2/Admin/Food_Donation_Bookings.dart';
-import 'package:chari/Test2/Admin/view_donations.dart';
+import 'package:chari/Test2/Admin/Login_Admin.dart';
+import 'package:chari/Test2/Admin/Food_Donation_Bookings_Admin.dart';
+import 'package:chari/Test2/Admin/View_donations_Admin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Screen/Hope_main_way.dart';
-import 'Home.dart';
-import 'Drawer.dart';
-import 'View_events.dart';
-import 'View_more_Page_food_bookings.dart';
-import 'View_Craft.dart';
+import '../Admin/View_events_Admin.dart';
+import 'Home_User.dart';
+import 'Login_User.dart';
 
-class Hope_Admin_Dashboard extends StatefulWidget {
-  const Hope_Admin_Dashboard({Key? key}) : super(key: key);
+class Hope_User_Dashboard extends StatefulWidget {
+  const Hope_User_Dashboard({Key? key}) : super(key: key);
 
   @override
-  _Hope_Admin_DashboardState createState() => _Hope_Admin_DashboardState();
+  _Hope_User_DashboardState createState() => _Hope_User_DashboardState();
 }
 
-class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
-
+class _Hope_User_DashboardState extends State<Hope_User_Dashboard> {
   int currentIndex = 0;
-  final screens =[
-    Home(),
+  final screens = [
+    Home_User(),
     Hope_Admin_event_Display(),
     donation_Display(),
-    Admin_View_Craftitem_(),
-
-
-
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +46,7 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
       // drawer: Drawer(
       //   child: MainDrawer(),
       // ),
-      body:screens[currentIndex],
+      body: screens[currentIndex],
       // Center(
       //   child: SingleChildScrollView(
       //     child: Column(
@@ -272,17 +265,18 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
       //   ),
       // ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // disable the animation
+        type: BottomNavigationBarType.fixed,
+        // disable the animation
         backgroundColor: Colors.white,
         elevation: 4,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-      //  iconSize: 40,
+        //  iconSize: 40,
         selectedFontSize: 15,
         unselectedFontSize: 13,
-      //  showSelectedLabels: false,
+        //  showSelectedLabels: false,
         currentIndex: currentIndex,
-        onTap: (index) =>setState(() =>currentIndex = index),
+        onTap: (index) => setState(() => currentIndex = index),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -309,7 +303,7 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
     );
   }
 
-  Customer_Signout(BuildContext ctx) async //using navigator so we need context
+  userr_Signout(BuildContext ctx) async //using navigator so we need context
   {
     final _CustomersharedPrefs = await SharedPreferences.getInstance();
     await _CustomersharedPrefs.clear();
@@ -317,7 +311,7 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (ctx1) => Hope_Admin_Login()),
+        MaterialPageRoute(builder: (ctx1) => Hope_use_Login()),
         (route) => false);
   }
 }

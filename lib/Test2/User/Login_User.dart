@@ -1,35 +1,37 @@
 import 'dart:convert';
 
-import 'package:chari/Test2/Admin/Dashboard.dart';
-import 'package:chari/Test2/Admin/Registration.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-import '../../main.dart';
+import '../../../main.dart';
+import 'Dashboard_User.dart';
+import 'Registration_User.dart';
 
 
 
-class Hope_Admin_Login extends StatefulWidget {
-  const Hope_Admin_Login({Key? key}) : super(key: key);
+
+class Hope_use_Login extends StatefulWidget {
+  const Hope_use_Login({Key? key}) : super(key: key);
 
   @override
-  _Hope_Admin_LoginState createState() => _Hope_Admin_LoginState();
+  _Hope_use_LoginState createState() => _Hope_use_LoginState();
 }
 
-class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
-  TextEditingController Admin_user = TextEditingController();
-  TextEditingController Admin_pass = TextEditingController();
-  final GlobalKey<FormState> Admin_formkey = GlobalKey<FormState>();
+class _Hope_use_LoginState extends State<Hope_use_Login> {
+  TextEditingController hope_user_user = TextEditingController();
+  TextEditingController Hope_user_pass = TextEditingController();
+  final GlobalKey<FormState> user_formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      // decoration: BoxDecoration(
+
+      decoration: BoxDecoration(
+        color: Colors.white,
       //   image: DecorationImage(
       //       image: AssetImage('assets/images/log.png'), fit: BoxFit.cover),
-      // ),
+       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -39,24 +41,27 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
               padding: EdgeInsets.only(left: 35, top: 130),
               child: Text(
                 'Welcome\nBack',
-                style: TextStyle(color: Colors.blueGrey, fontSize: 33),
+                style: TextStyle(color: Colors.black, fontSize: 33),
               ),
             ),
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
+                    top: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       margin: EdgeInsets.only(left: 35, right: 35),
                       child: Form(
-                        key: Admin_formkey,
+                        key: user_formkey,
                         child: Column(
                           children: [
                             TextFormField(
-                              controller: Admin_user,
+                              controller: hope_user_user,
                               keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -78,7 +83,7 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
                               height: 30,
                             ),
                             TextFormField(
-                              controller: Admin_pass,
+                              controller: Hope_user_pass,
                               keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -119,14 +124,14 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
                                       ),
                                       onPressed: () {
                                         setState(() {
-                                          // login();
-                                        });
-                                        Admin_Login();
 
-                                        if (Admin_formkey.currentState!.validate()) {
+                                        });
+                                        Hope_User_Login();
+
+                                        if (user_formkey.currentState!.validate()) {
                                           print("Successfully  logged");
-                                          Admin_user.clear();
-                                          Admin_pass.clear();
+                                          hope_user_user.clear();
+                                          Hope_user_pass.clear();
                                         }
                                       }),
                                 ),
@@ -140,8 +145,8 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    // Navigator.pushNamed(context, 'register');
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyRegister()));
+                                    //Navigator.pushNamed(context, 'register');
+                                    //Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Ad_Registration()));
                                   },
                                   child: Text(
                                     'Does not have an account?',
@@ -155,12 +160,11 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      // Navigator.pushNamed(context, 'register');
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Hope_Admin_Registration()));
+                                                  Hope_User_Registration()));
                                     },
                                     child: Text(
                                       //  'Forgot Password',
@@ -187,17 +191,18 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
     );
   }
 
-  Future Admin_Login() async {
+
+  Future Hope_User_Login() async {
     //var url ="https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Login.php"; //intego wifi password
-    var url ="http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_login.php";
+    var url ="http://192.168.29.64/MySampleApp/Charity_Hope/Hope_User_login.php";
     var response = await http.post(Uri.parse(url),
         headers: {
           'Accept':'application/json'
         },
 
         body: {
-          "username": Admin_user.text,
-          "password": Admin_pass.text,
+          "username": hope_user_user .text,
+          "password": Hope_user_pass.text,
         });
     var data = json.decode(response.body);
     // if (data.toString() == "Success") {
@@ -206,10 +211,14 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
 
 
       for (var singleUser in data) {
+
+
         print(singleUser["id"]);
-        final _CustomersharedPrefs = await SharedPreferences.getInstance();
+        uid_user=singleUser["id"];
+
+        final _UserrsharedPrefs = await SharedPreferences.getInstance();
         // await _CustomersharedPrefs.setBool(Customer_Key, true);
-        await _CustomersharedPrefs.setString("useid", singleUser["id"]);
+        await _UserrsharedPrefs.setString("hope_userid", singleUser["id"]);
 
         // print(response);
         //Customer_Key=singleUser["id"];
@@ -236,7 +245,7 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
 
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Hope_Admin_Dashboard()));
+          context, MaterialPageRoute(builder: (context) => Hope_User_Dashboard()));
       print("username:");
       // Customer_Key=data["id"];
       //print(data["id"]);
@@ -260,4 +269,61 @@ class _Hope_Admin_LoginState extends State<Hope_Admin_Login> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
+
+
+
+//old code-> Future Hope_User_Login() async {
+//   var url =
+//       "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_User_login.php"; //intego wifi password
+//   //  var url ="https://anthracitic-pecks.000webhostapp.com/login.php";
+//   var response = await http.post(Uri.parse(url), body: {
+//     "username": hope_user_user.text,
+//     "password": Hope_user_pass.text,
+//   });
+//   var data = json.decode(response.body);
+//   if (data.toString() == "Success") {
+//     // await  SessionManager().set('token', user.text);
+//
+//     final snackBar = SnackBar(
+//       content: Text('Login Successfull'),
+//       duration: Duration(seconds: 1),
+//       action: SnackBarAction(
+//         label: 'Ok',
+//         onPressed: () {
+//        //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Merchant_Dashboard()));
+//           // Some code to undo the change.
+//         },
+//       ),
+//     );
+//
+//     // Find the ScaffoldMessenger in the widget tree
+//     // and use it to show a SnackBar.
+//     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+//
+//     final _sharedPrefs = await SharedPreferences.getInstance();
+//
+//     await _sharedPrefs.setBool(Hope_user_Key, true);
+//
+//     Navigator.push(
+//         context, MaterialPageRoute(builder: (context) => Hope_User_Dashboard()));
+//     print("username:");
+//   } else {
+//     final snackBar = SnackBar(
+//       content: Text('Username and password invalid'),
+//       action: SnackBarAction(
+//         label: 'Ok',
+//         onPressed: () {
+//         //  Navigator.push(context, MaterialPageRoute(builder: (context)=>Merchant_Dashboard()));
+//           // Some code to undo the change.
+//         },
+//       ),
+//     );
+//
+//     // Find the ScaffoldMessenger in the widget tree
+//     // and use it to show a SnackBar.
+//     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+//   }
+// }
+
 }

@@ -1,22 +1,28 @@
-import 'package:chari/Test2/Admin/Login.dart';
-import 'package:chari/Test2/Admin/Food_Donation_Bookings.dart';
-import 'package:chari/Test2/Admin/view_donations.dart';
+import 'package:chari/Test2/Admin/Login_Admin.dart';
+import 'package:chari/Test2/Admin/Food_Donation_Bookings_Admin.dart';
+import 'package:chari/Test2/Admin/View_donations_Admin.dart';
+import 'package:chari/Test2/User/Drawer_User.dart';
+import 'package:chari/Test2/User/Display_donations_User_.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Drawer.dart';
-import 'View_events.dart';
-import 'View_more_Page_food_bookings.dart';
-import 'View_Craft.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import '../Admin/View_Craft_Admin.dart';
+import '../Admin/View_events_Admin.dart';
+import '../Admin/View_more_Page_food_bookings_Admin.dart';
+
+import 'View_more_Page_food_bookings_User.dart';
+import 'Display_Craf_User_.dart';
+
+
+class Home_User extends StatefulWidget {
+  const Home_User({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _Home_UserState createState() => _Home_UserState();
 }
 
-class _HomeState extends State<Home> {
+class _Home_UserState extends State<Home_User> {
 
 
   @override
@@ -26,7 +32,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.pink.shade300,
-        title: Text("Admin Dashboard"),
+        title: Text("Dashboard"),
         //   leading: IconButton(onPressed: (){
         // Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Main_Way()));
         //   },icon: Icon(Icons.arrow_back),),
@@ -39,7 +45,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       drawer: Drawer(
-        child: MainDrawer(),
+        child: UserDrawer(),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -120,7 +126,7 @@ class _HomeState extends State<Home> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => donation_Display()));
+                                  builder: (context) => Usre_donation_Display()));
                         },
                         child: Container(
                           height: 150,
@@ -212,7 +218,7 @@ class _HomeState extends State<Home> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                food_donation_bookings_view_more()));
+                                User_food_donation_bookings_view_more()));
                   },
                   child: Text("View more",
                       style: TextStyle(
@@ -241,7 +247,7 @@ class _HomeState extends State<Home> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Admin_View_Craftitem_()));
+                          builder: (context) => User_View_Craftitem_()));
                 },
                 child: Container(
                   height: 120,

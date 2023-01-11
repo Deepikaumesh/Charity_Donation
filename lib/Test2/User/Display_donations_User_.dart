@@ -1,35 +1,64 @@
 import 'dart:convert';
+import 'package:chari/Test2/Admin/View_donation_detail_page_Admin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'View_event_detail_page.dart';
+import 'Money_Donation_User.dart';
+import 'Money_Donation_detail_page_User.dart';
 
 //Creating a class user to store the data;
-class event_data_model {
+class donation_model {
   final String id;
   final String name;
-  final String event_date;
-  final String event_time;
-  final String description;
+  final String place;
+  final String phone;
+  final String amount;
 
-  event_data_model({
+  donation_model({
     required this.id,
     required this.name,
-    required this.event_date,
-    required this.event_time,
-    required this.description,
+    required this.place,
+    required this.phone,
+    required this.amount,
   });
 }
 
-class Hope_Admin_event_Display extends StatefulWidget {
+class Usre_donation_Display extends StatefulWidget {
   @override
-  _Hope_Admin_event_DisplayState createState() =>
-      _Hope_Admin_event_DisplayState();
+  _Usre_donation_DisplayState createState() => _Usre_donation_DisplayState();
 }
 
-class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
+class _Usre_donation_DisplayState extends State<Usre_donation_Display> {
+  //Applying get request.
+  Future<List<donation_model>> getRequest() async {
+    //replace your restFull API here.
+
+    final response = await http.get(Uri.parse(
+        "http://192.168.29.64/MySampleApp/Charity_Hope/donation_display.php"));
+
+    var responseData = json.decode(response.body);
+
+    //Creating a list to store input data;
+    List<donation_model> users = [];
+    for (var singleUser in responseData) {
+      donation_model user = donation_model(
+        // productqty: singleUser["productqty"].toString(),
+
+        name: singleUser["name"].toString(),
+        id: singleUser["id"].toString(),
+        place: singleUser["place"].toString(),
+        phone: singleUser["phone"].toString(),
+        amount: singleUser["amount"].toString(),
+      );
+
+      //Adding user to the list.
+      users.add(user);
+    }
+    return users;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +72,7 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
         backgroundColor: Colors.pink.shade300,
         centerTitle: true,
         title: Text(
-          "Events",
+          "Donations",
           style: GoogleFonts.prompt(fontSize: 22),
         ),
       ),
@@ -52,7 +81,7 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
         child: Column(
           children: [
             FutureBuilder(
-              future: Display_Data(),
+              future: getRequest(),
               builder: (BuildContext ctx, AsyncSnapshot snapshot) {
                 if (snapshot.data == null || snapshot.data == false) {
                   return Container(
@@ -115,9 +144,20 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                                             child: ListTile(
                                               contentPadding:
                                                   EdgeInsets.all(15.0),
+                                              // leading: Container(
+                                              //   height: 50,
+                                              //   width: 50,
+                                              //   decoration: BoxDecoration(
+                                              //     shape: BoxShape.circle,
+                                              //     border: Border.all(color: Colors.red.shade900),
+                                              //     image: DecorationImage(
+                                              //       image: NetworkImage(snapshot.data[index].image),
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               title: Row(
                                                 children: [
-                                                  Text("Event name:"),
+                                                  Text("Donor name:"),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
@@ -134,13 +174,12 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                                               ),
                                               subtitle: Row(
                                                 children: [
-                                                  Text("Event date:"),
+                                                  Text("Donor Place:"),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
                                                   Text(
-                                                    snapshot
-                                                        .data[index].event_date,
+                                                    snapshot.data[index].place,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: GoogleFonts.lora(
@@ -159,8 +198,8 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        View_Event_Detail_Page(
-                                                                          data_event:
+                                                                        View_User_Donation_Detail_Page(
+                                                                          donation_data:
                                                                               snapshot.data[index],
                                                                         )));
                                                       },
@@ -186,37 +225,41 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
                 }
               },
             ),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Hope_User_Money_Donation()));
+                  },
+                  child: Container(
+                    height: 50,
+                    color: Colors.pink.shade50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Donate",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20,
+                              color: Colors.red.shade900),
+                        ),
+                        // Text(
+                        //   "\$${returnTotalAmount(_user)}",
+                        //   style: TextStyle(
+                        //       fontWeight: FontWeight.w700, fontSize: 20),
+                        // ),
+                      ],
+                    ),
+                  ),
+                )),
           ],
         ),
       ),
     );
-  }
-
-  Future<List<event_data_model>> Display_Data() async {
-    //replace your restFull API here.
-
-    final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/event_Display.php"));
-
-    var responseData = json.decode(response.body);
-
-    //Creating a list to store input data;
-    List<event_data_model> users = [];
-    for (var singleUser in responseData) {
-      event_data_model user = event_data_model(
-        // productqty: singleUser["productqty"].toString(),
-
-        name: singleUser["name"].toString(),
-        event_date: singleUser["event_date"].toString(),
-        event_time: singleUser["event_time"].toString(),
-        description: singleUser["description"].toString(),
-        id: singleUser["id"].toString(),
-      );
-
-      //Adding user to the list.
-      users.add(user);
-    }
-    return users;
   }
 
   Future<void> delrecord(String id) async {
@@ -229,7 +272,7 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
     if (resoponse["success"] == "true") {
       print(id);
       // setState(() {
-      Display_Data();
+      getRequest();
       // });
 
     } else {

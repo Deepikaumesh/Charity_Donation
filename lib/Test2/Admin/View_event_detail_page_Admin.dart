@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'Add_event.dart';
-import 'View_events.dart';
+import 'Add_event_Admin.dart';
+import 'View_events_Admin.dart';
 
 class View_Event_Detail_Page extends StatefulWidget {
   final event_data_model data_event;

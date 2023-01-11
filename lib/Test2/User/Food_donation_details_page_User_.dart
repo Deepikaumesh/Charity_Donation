@@ -1,23 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 
-import 'Add_event.dart';
-import 'View_more_Page_food_bookings.dart';
+import '../User/View_more_Page_food_bookings_User.dart';
 
 
 
-class View_food_donation_Detail_Page extends StatefulWidget {
+
+
+
+
+
+class View_User_food_donation_Detail_Page extends StatefulWidget {
   final food_donation_model data_food_donation;
 
-  const View_food_donation_Detail_Page({required this.data_food_donation});
+  const View_User_food_donation_Detail_Page({required this.data_food_donation});
 
   @override
-  _View_food_donation_Detail_PageState createState() => _View_food_donation_Detail_PageState();
+  _View_User_food_donation_Detail_PageState createState() => _View_User_food_donation_Detail_PageState();
 }
 
-class _View_food_donation_Detail_PageState extends State<View_food_donation_Detail_Page> {
+class _View_User_food_donation_Detail_PageState extends State<View_User_food_donation_Detail_Page> {
 
   @override
   Widget build(BuildContext context) {

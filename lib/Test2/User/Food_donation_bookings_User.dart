@@ -5,18 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-class Hope_Admin_event_registration extends StatefulWidget {
+class Hope_User_food_donation_bookings extends StatefulWidget {
   @override
-  _Hope_Admin_event_registrationState createState() =>
-      _Hope_Admin_event_registrationState();
+  _Hope_User_food_donation_bookingsState createState() =>
+      _Hope_User_food_donation_bookingsState();
 }
 
-class _Hope_Admin_event_registrationState
-    extends State<Hope_Admin_event_registration> {
-  TextEditingController name = new TextEditingController();
-  TextEditingController event_date = new TextEditingController();
-  TextEditingController event_time = new TextEditingController();
-  TextEditingController description = new TextEditingController();
+class _Hope_User_food_donation_bookingsState
+    extends State<Hope_User_food_donation_bookings> {
+  TextEditingController date = new TextEditingController();
+  TextEditingController donor = new TextEditingController();
+  TextEditingController food = new TextEditingController();
 
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
@@ -25,10 +24,10 @@ class _Hope_Admin_event_registrationState
 
   @override
   void initState() {
-    name = TextEditingController();
-    event_date = TextEditingController();
-    event_time = TextEditingController();
-    description = TextEditingController();
+    date = TextEditingController();
+    donor = TextEditingController();
+    food = TextEditingController();
+
 
     status = false;
     message = "";
@@ -39,12 +38,11 @@ class _Hope_Admin_event_registrationState
   Future<void> submitData() async {
     var send = await http.post(
         Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/event_registration.php"),
+            "http://192.168.29.64/MySampleApp/Charity_Hope/user_food_donation_bookings.php"),
         body: {
-          "name": name.text,
-          "event_date": event_date.text,
-          "event_time": event_time.text,
-          "description": description.text,
+          "date": date.text,
+          "food": food.text,
+          "donor": donor.text,
         });
 
     if (send.statusCode == 200) {
@@ -57,10 +55,9 @@ class _Hope_Admin_event_registrationState
           message = responseMessage;
         });
       } else {
-        name.clear();
-        event_date.clear();
-        event_time.clear();
-        description.clear();
+        date.clear();
+        food.clear();
+        donor.clear();
 
         setState(() {
           status = true;
@@ -81,7 +78,7 @@ class _Hope_Admin_event_registrationState
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Add Event",
+          "Food donation",
           style: GoogleFonts.prompt(color: Colors.pink.shade300),
         ),
         backgroundColor: Colors.white,
@@ -115,9 +112,9 @@ class _Hope_Admin_event_registrationState
 
                         return null;
                       },
-                      controller: name,
+                      controller: donor,
                       decoration: InputDecoration(
-                        labelText: "Enter event name",
+                        labelText: "Enter your name",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
@@ -131,7 +128,7 @@ class _Hope_Admin_event_registrationState
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
-                      controller: event_date,
+                      controller: date,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Date Should not empty!";
@@ -140,7 +137,7 @@ class _Hope_Admin_event_registrationState
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: "Pick event date",
+                        labelText: "Pick date",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
@@ -154,7 +151,8 @@ class _Hope_Admin_event_registrationState
                   Container(
                     //  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
-                      controller: event_time,
+                      textCapitalization: TextCapitalization.words,
+                      controller: food,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Time Should not empty!";
@@ -163,7 +161,7 @@ class _Hope_Admin_event_registrationState
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: "Enter event time",
+                        labelText: "Enter food type",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
@@ -174,27 +172,7 @@ class _Hope_Admin_event_registrationState
                   SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    //  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                    child: TextFormField(
-                      controller: description,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Description Should not empty!";
-                        }
 
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        labelText: "Enter event description",
-                        border: new OutlineInputBorder(
-                          borderSide: new BorderSide(color: Colors.teal),
-                        ),
-                      ),
-                      keyboardType: TextInputType.multiline,
-                      maxLines: 5,
-                    ),
-                  ),
                   SizedBox(
                     height: 30,
                   ),
@@ -210,10 +188,9 @@ class _Hope_Admin_event_registrationState
                         setState(() {
                           submitData();
                         });
-                        name.clear();
-                        event_time.clear();
-                        event_date.clear();
-                        description.clear();
+                        donor.clear();
+                        food.clear();
+                        date.clear();
                       }
                     },
                     child: Text('Submit'),

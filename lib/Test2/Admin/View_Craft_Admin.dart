@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'craft_Shop_detail_page.dart';
+
+import 'Craft_Shop_detail_page__Admin.dart';
 
 class craft_model {
   final String id;
@@ -136,14 +137,17 @@ class _Admin_View_Craftitem_State extends State<Admin_View_Craftitem_> {
                                                             style:
                                                                 GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
                                                           ),
+
                                                   SizedBox(width: 10,),
-                                                  Text("details"),
+                                                 Text("details"),
                                                   IconButton(onPressed: (){
                                                     Navigator.pushReplacement(context, 
                                                         MaterialPageRoute(builder:
-                                                            (context)=>View_craft_shop_Detail_Page(data_craft: snapshot.data[index],)));
-                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded))
+                                                            (context)=>Admin_View_craft_shop_Detail_Page(data_craft: snapshot.data[index],)));
+                                                  }, icon: Icon(Icons.arrow_forward_ios_rounded)),
+
                                             ],  ),
+
 
                                             ),
 
@@ -220,8 +224,8 @@ class _Admin_View_Craftitem_State extends State<Admin_View_Craftitem_> {
 
         name: singleUser["name"].toString(),
         id: singleUser["id"].toString(),
-       craft_id:singleUser["id"].toString(),
-        price:singleUser["craft_id"].toString(),
+       craft_id:singleUser["craft_id"].toString(),
+        price:singleUser["price"].toString(),
         description:singleUser["description"].toString(),
         image: singleUser["image"].toString(),
       );

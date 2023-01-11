@@ -1,58 +1,57 @@
 import 'dart:convert';
-import 'package:chari/Test2/Admin/view_donation_detail_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-//Creating a class user to store the data;
-class donation_model {
-  final String id;
-  final String name;
-  final String place;
-  final String phone;
-  final String amount;
+import 'Food_donation_details_page_Admin.dart';
 
-  donation_model({
+//Creating a class user to store the data;
+class food_donation_model {
+  // final String id;
+  final String id;
+  final String date;
+  final String donor;
+  final String food;
+
+
+  food_donation_model({
+    // required this.id,
     required this.id,
-    required this.name,
-    required this.place,
-    required this.phone,
-    required this.amount,
+    required this.date,
+    required this.donor,
+    required this.food,
+
   });
 }
 
-class donation_Display extends StatefulWidget {
+class food_donation_bookings_view_more extends StatefulWidget {
   @override
-  _donation_DisplayState createState() =>
-      _donation_DisplayState();
+  _food_donation_bookings_view_moreState createState() => _food_donation_bookings_view_moreState();
 }
 
-class _donation_DisplayState extends State<donation_Display> {
+class _food_donation_bookings_view_moreState extends State<food_donation_bookings_view_more> {
+//Applying get request.
 
-
-
-  //Applying get request.
-  Future<List<donation_model>> getRequest() async {
+  Future<List<food_donation_model>> getRequest() async {
     //replace your restFull API here.
+    String url =
+        "http://192.168.29.64/MySampleApp/Charity_Hope/food_donation.php";
 
-    final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/donation_display.php"
-    ));
+    final response = await http.get(Uri.parse(url));
 
     var responseData = json.decode(response.body);
 
     //Creating a list to store input data;
-    List<donation_model> users = [];
+    List<food_donation_model> users = [];
     for (var singleUser in responseData) {
-      donation_model user = donation_model(
-        // productqty: singleUser["productqty"].toString(),
-
-        name: singleUser["name"].toString(),
+      food_donation_model user = food_donation_model(
+        //id:  singleUser["id"].toString(),
         id: singleUser["id"].toString(),
-        place:singleUser["place"].toString(),
-        phone: singleUser["phone"].toString(),
-        amount:singleUser["amount"].toString(),
+        date: singleUser["date"].toString(),
+        donor:singleUser["donor"].toString(),
+        food: singleUser["food"].toString(),
+
+
       );
 
       //Adding user to the list.
@@ -65,16 +64,15 @@ class _donation_DisplayState extends State<donation_Display> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //     onPressed: () {
-        //       Navigator.pop(context);
-        //     },
-        //     icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         backgroundColor: Colors.pink.shade300,
         centerTitle: true,
         title: Text(
-          "Donations",
+          "Food Donations",
           style: GoogleFonts.prompt(fontSize: 22),
         ),
       ),
@@ -162,7 +160,7 @@ class _donation_DisplayState extends State<donation_Display> {
                                                 children:[
                                                   Text("Donor name:"),
                                                   SizedBox(width: 10,),
-                                                  Text(snapshot.data[index].name,
+                                                  Text(snapshot.data[index].donor,
                                                     overflow: TextOverflow.ellipsis,
                                                     style:
                                                     GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
@@ -171,9 +169,9 @@ class _donation_DisplayState extends State<donation_Display> {
                                               ),
                                               subtitle: Row(
                                                 children:[
-                                                  Text("Donor Place:"),
+                                                  Text("Date:"),
                                                   SizedBox(width: 10,),
-                                                  Text(snapshot.data[index].place,
+                                                  Text(snapshot.data[index].date,
                                                     overflow: TextOverflow.ellipsis,
                                                     style:
                                                     GoogleFonts.lora(fontSize: 15, color: Colors.pink.shade700),
@@ -181,15 +179,9 @@ class _donation_DisplayState extends State<donation_Display> {
                                                   SizedBox(width: 10,),
                                                   Text("details"),
                                                   IconButton(onPressed: (){
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder:
-                                                                (context) =>
-                                                                    View_Donation_Detail_Page(donation_data: snapshot.data[index],
-
-
-                                                                )));
+                                                    Navigator.pushReplacement(context,
+                                                        MaterialPageRoute(builder: (context)=>
+                                                            View_food_donation_Detail_Page(data_food_donation:snapshot.data[index])));
                                                   }, icon: Icon(Icons.arrow_forward_ios_rounded))
                                                 ],  ),
 
@@ -217,23 +209,5 @@ class _donation_DisplayState extends State<donation_Display> {
         ),
       ),
     );
-  }
-
-  Future<void> delrecord(String id) async {
-    String url =
-        "https://anthracitic-pecks.000webhostapp.com/scan_copy/Customer/CartDelete.php";
-    var res = await http.post(Uri.parse(url), body: {
-      "id": id,
-    });
-    var resoponse = jsonDecode(res.body);
-    if (resoponse["success"] == "true") {
-      print(id);
-      // setState(() {
-      getRequest();
-      // });
-
-    } else {
-      print("some issue");
-    }
   }
 }

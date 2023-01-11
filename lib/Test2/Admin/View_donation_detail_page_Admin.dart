@@ -1,7 +1,11 @@
-import 'package:chari/Test2/Admin/view_donations.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Admin/View_donations_Admin.dart';
+
+
 
 class View_Donation_Detail_Page extends StatefulWidget {
   final donation_model donation_data;

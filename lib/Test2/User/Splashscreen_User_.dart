@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../main.dart';
-import 'Hope_User_Dashboard.dart';
-import 'Hope_User_Login.dart';
+import 'Dashboard_User.dart';
+import 'Login_User.dart';
 
 
 
@@ -72,19 +72,30 @@ class _Hope_User_SplashState extends State<Hope_User_Splash> {
     Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Hope_use_Login()));
   }
 
+  //
+  // old code -> Future<void> checkHopeUserLoogedIn() async{
+  //   final _Hope_AdminsharedPrefs =await SharedPreferences.getInstance();
+  //   print(Hope_user_Key);
+  //   final _merchantLoggedIn=_Hope_AdminsharedPrefs.getBool(Hope_user_Key);
+  //   if(_merchantLoggedIn == null || _merchantLoggedIn == false){
+  //     HopeUser_gotoLogin();
+  //   }
+  //   else{
+  //     Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_User_Dashboard()));
+  //   }
+  //
+  // }
 
-  Future<void> checkHopeUserLoogedIn() async{
-    final _Hope_AdminsharedPrefs =await SharedPreferences.getInstance();
-    print(Hope_user_Key);
-    final _merchantLoggedIn=_Hope_AdminsharedPrefs.getBool(Hope_user_Key);
-    if(_merchantLoggedIn == null || _merchantLoggedIn == false){
+  Future<void> checkHopeUserLoogedIn() async {
+    final _sharedPrefs = await SharedPreferences.getInstance();
+    // print("first key check "+Customer_Key);
+    final _hope_user_userid = _sharedPrefs.getString("hope_userid");
+
+    if (_hope_user_userid == null) {
       HopeUser_gotoLogin();
     }
-    else{
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_User_Dashboard()));
+    else {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => Hope_User_Dashboard()));
     }
-
-  }
-
-
-}
+  }}

@@ -2,21 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Add_Craft_Item.dart';
-import 'View_Craft.dart';
 
-class View_craft_shop_Detail_Page extends StatefulWidget {
+import 'Add_Craft_Item_Admin.dart';
+import 'View_Craft_Admin.dart';
+
+class Admin_View_craft_shop_Detail_Page extends StatefulWidget {
   final craft_model data_craft;
 
-  const View_craft_shop_Detail_Page({required this.data_craft});
+  const Admin_View_craft_shop_Detail_Page({required this.data_craft});
 
   @override
-  _View_craft_shop_Detail_PageState createState() =>
-      _View_craft_shop_Detail_PageState();
+  _Admin_View_craft_shop_Detail_PageState createState() =>
+      _Admin_View_craft_shop_Detail_PageState();
 }
 
-class _View_craft_shop_Detail_PageState
-    extends State<View_craft_shop_Detail_Page> {
+class _Admin_View_craft_shop_Detail_PageState
+    extends State<Admin_View_craft_shop_Detail_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

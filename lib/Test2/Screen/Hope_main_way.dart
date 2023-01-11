@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Admin/Hope_Admin_Splashscreen.dart';
-import '../User/Hope_User_Splashscreen.dart';
+import '../Admin/Splashscreen_Admin.dart';
+import '../User/Splashscreen_User_.dart';
 
 
 
@@ -136,7 +136,7 @@ class Hope_Main_Way extends StatelessWidget {
 // import 'package:flutter/material.dart';
 //
 // import '../Admin/Hope_Admin_Splashscreen.dart';
-// import '../User/Hope_User_Splashscreen.dart';
+// import '../User/Splashscreen_User_.dart';
 //
 //
 //

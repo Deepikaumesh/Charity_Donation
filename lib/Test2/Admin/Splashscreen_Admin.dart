@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:ui';
 
 
-import 'package:chari/Test2/Admin/Login.dart';
+import 'package:chari/Test2/Admin/Login_Admin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Dashboard.dart';
+import 'Dashboard_Admin.dart';
 
 
 
@@ -63,11 +63,11 @@ class _Admin_SplashscreenState extends State<Admin_Splashscreen> {
 
 
   Future<void> checkAdminLogedIn() async{
-    final _sharedPrefs =await SharedPreferences.getInstance();
+    final _hope_adminsharedprfs =await SharedPreferences.getInstance();
     // print("first key check "+Customer_Key);
-    final _userid=_sharedPrefs.getString("useid");
+    final _hope_admin_userid=_hope_adminsharedprfs.getString("useid");
 
-    if(_userid == null){
+    if(_hope_admin_userid == null){
       gotoLogin_Admin();
     }
     else{

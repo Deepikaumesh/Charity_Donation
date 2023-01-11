@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import 'Dashboard.dart';
+import '../../Travel/Dashboard_with_bottom_navigation_bar.dart';
+
 
 class craft_model {
   final String id;
