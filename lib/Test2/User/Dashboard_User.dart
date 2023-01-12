@@ -1,5 +1,3 @@
-import 'package:chari/Test2/Admin/Login_Admin.dart';
-import 'package:chari/Test2/Admin/Food_Donation_Bookings_Admin.dart';
 import 'package:chari/Test2/Admin/View_donations_Admin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Admin/View_events_Admin.dart';
 import 'Home_User.dart';
 import 'Login_User.dart';
+import 'View_Cart_User.dart';
 
 class Hope_User_Dashboard extends StatefulWidget {
   const Hope_User_Dashboard({Key? key}) : super(key: key);
@@ -22,6 +21,7 @@ class _Hope_User_DashboardState extends State<Hope_User_Dashboard> {
     Home_User(),
     Hope_Admin_event_Display(),
     donation_Display(),
+    Viewcart_User(),
   ];
 
   @override
@@ -293,11 +293,12 @@ class _Hope_User_DashboardState extends State<Hope_User_Dashboard> {
             label: 'donations',
             backgroundColor: Colors.blue,
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.home),
-          //   label: 'craft ',
-          //   backgroundColor: Colors.blue,
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'view cart',
+            backgroundColor: Colors.blue,
+          ),
+
         ],
       ),
     );

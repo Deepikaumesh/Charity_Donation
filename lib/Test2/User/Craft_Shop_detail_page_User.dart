@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
 import '../User/Display_Craf_User_.dart';
 
 class User_View_craft_shop_Detail_Page extends StatefulWidget {
@@ -22,13 +24,24 @@ class _User_View_craft_shop_Detail_PageState
     extends State<User_View_craft_shop_Detail_Page> {
   TextEditingController crt_id = new TextEditingController();
   TextEditingController uid = new TextEditingController();
+  TextEditingController qty = new TextEditingController();
+
   late bool status;
   late String message;
+
+  Future<void> access_id() async {
+    final _sharedPrefs = await SharedPreferences.getInstance();
+    final  ui = _sharedPrefs.getString("hope_userid");
+    uid_user =ui!;
+
+  }
+
 
   @override
   void initState() {
     crt_id = TextEditingController(text: widget.data_craft.craft_id);
     uid = TextEditingController();
+    qty = TextEditingController(text: "1");
 
     status = false;
     message = "";
@@ -43,7 +56,8 @@ class _User_View_craft_shop_Detail_PageState
         body: {
           //"id": widget.data_craft.id.toString(),
           "craft_id": widget.data_craft.craft_id,
-          "uid": uid.text,
+          "uid": uid_user,
+          "qty": qty.text,
         });
 
     if (send.statusCode == 200) {
@@ -58,6 +72,7 @@ class _User_View_craft_shop_Detail_PageState
       } else {
         crt_id.clear();
         uid.clear();
+
         setState(() {
           status = true;
           message = responseMessage;
@@ -100,49 +115,74 @@ class _User_View_craft_shop_Detail_PageState
                       fit: BoxFit.cover)),
             ),
           ),
-          Positioned(
-            top: 60,
-            right: 40,
-            left: 40,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 9.0),
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                controller: crt_id,
-                decoration: InputDecoration(
-                  labelText: "craft id",
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(color: Colors.teal),
-                  ),
-                ),
-                keyboardType: TextInputType.text,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 100,
-            right: 40,
-            left: 40,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 9.0),
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                controller: uid,
-                decoration: InputDecoration(
-                  labelText: "uid",
-                  border: new OutlineInputBorder(
-                    borderSide: new BorderSide(color: Colors.teal),
-                  ),
-                ),
-                keyboardType: TextInputType.text,
-              ),
-            ),
-          ),
           // Positioned(
-          //   top: 130,
+          //   top: 60,
           //   right: 40,
           //   left: 40,
-          //   child:Text("hello"+uid_user),
+          //   child: Container(
+          //     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 9.0),
+          //     child: TextFormField(
+          //       textAlign: TextAlign.center,
+          //       controller: crt_id,
+          //       decoration: InputDecoration(
+          //         labelText: "craft id",
+          //         border: new OutlineInputBorder(
+          //           borderSide: new BorderSide(color: Colors.teal),
+          //         ),
+          //       ),
+          //       keyboardType: TextInputType.text,
+          //     ),
+          //   ),
+          // ),
+          // Positioned(
+          //   top: 100,
+          //   right: 40,
+          //   left: 40,
+          //   child: Container(
+          //     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 9.0),
+          //     child: TextFormField(
+          //       textAlign: TextAlign.center,
+          //       controller: uid,
+          //       decoration: InputDecoration(
+          //         labelText: "uid",
+          //         border: new OutlineInputBorder(
+          //           borderSide: new BorderSide(color: Colors.teal),
+          //         ),
+          //       ),
+          //       keyboardType: TextInputType.text,
+          //     ),
+          //   ),
+          // ),
+          // Positioned(
+          //   top: 150,
+          //   right: 40,
+          //   left: 40,
+          //   child: Container(
+          //     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 9.0),
+          //     child: TextFormField(
+          //       textAlign: TextAlign.center,
+          //       controller: qty,
+          //       decoration: InputDecoration(
+          //       //  labelText: "uid",
+          //         border: new OutlineInputBorder(
+          //           borderSide: new BorderSide(color: Colors.teal),
+          //         ),
+          //       ),
+          //       keyboardType: TextInputType.text,
+          //     ),
+          //   ),
+          // ),
+          //
+          // Positioned(
+          //   top: 170,
+          //   right: 40,
+          //   left: 40,
+          //   child: Row(
+          //     children: [
+          //       Text("hello"),
+          //       Text(uid_user),
+          //     ],
+          //   )
           // ),
           Positioned(
             top: 400,
@@ -169,11 +209,67 @@ class _User_View_craft_shop_Detail_PageState
                       Text("\$" + widget.data_craft.price,
                           style: GoogleFonts.prompt(
                               color: Colors.white, fontSize: 20)),
+
+                      // Text("hai"),
+                      //
+                      // // Text("jnjh"),
+                      // TextFormField(
+                      //   controller: qty,
+                      //   textAlign: TextAlign.center,
+                      //   decoration: new InputDecoration(
+                      //     hintText: 'jnj',
+                      //     border: InputBorder.none,
+                      //     focusedBorder: InputBorder.none,
+                      //     enabledBorder: InputBorder.none,
+                      //     errorBorder: InputBorder.none,
+                      //     disabledBorder: InputBorder.none,
+                      //   ),
+                      //  ),
+                      // TextFormField(
+                      //   controller: qty,
+                      //
+                      //   decoration: InputDecoration(
+                      //     labelText: "Enter event description",
+                      //     border: new OutlineInputBorder(
+                      //       borderSide: new BorderSide(color: Colors.white),
+                      //     ),
+                      //   ),
+                      //   keyboardType: TextInputType.multiline,
+                      //   maxLines: 5,
+                      // ),
                     ],
                   ),
+
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 160),
+                  //   child: TextFormField(
+                  //     controller: qty,
+                  //
+                  //     decoration: InputDecoration(
+                  //       labelText: "Enter event description",
+                  //       border: new OutlineInputBorder(
+                  //         borderSide: new BorderSide(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //     keyboardType: TextInputType.text
+                  //   ),
+                  // ),
+                  // TextFormField(
+                  //   controller: qty,
+                  //   textAlign: TextAlign.center,
+                  //   decoration: new InputDecoration(
+                  //     hintText: 'jnj',
+                  //     border: InputBorder.none,
+                  //     focusedBorder: InputBorder.none,
+                  //     enabledBorder: InputBorder.none,
+                  //     errorBorder: InputBorder.none,
+                  //     disabledBorder: InputBorder.none,
+                  //   ),
+                  //  ),
+
                   Text(
                     widget.data_craft.description,
                     style: (TextStyle(fontSize: 15)),

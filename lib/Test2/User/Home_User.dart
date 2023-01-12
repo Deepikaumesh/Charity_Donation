@@ -1,8 +1,11 @@
+
+
 import 'package:chari/Test2/Admin/Login_Admin.dart';
 import 'package:chari/Test2/Admin/Food_Donation_Bookings_Admin.dart';
 import 'package:chari/Test2/Admin/View_donations_Admin.dart';
 import 'package:chari/Test2/User/Drawer_User.dart';
 import 'package:chari/Test2/User/Display_donations_User_.dart';
+import 'package:chari/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +26,14 @@ class Home_User extends StatefulWidget {
 }
 
 class _Home_UserState extends State<Home_User> {
+
+
+   // Future<void> accessuid() async {
+   //   final _sharedPrefs = await SharedPreferences.getInstance();
+   //  final  ui = _sharedPrefs.getString("hope_userid");
+   //  uid_user =ui!;
+   //
+   // }
 
 
   @override
@@ -67,6 +78,12 @@ class _Home_UserState extends State<Home_User> {
               SizedBox(
                 height: 20,
               ),
+
+          //  Text("hello"),
+          // Text(uid_user),
+
+
+
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 65, vertical: 10),
                 height: 50,

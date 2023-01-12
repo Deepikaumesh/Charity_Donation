@@ -98,4 +98,5 @@ class _Hope_User_SplashState extends State<Hope_User_Splash> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => Hope_User_Dashboard()));
     }
-  }}
+  }
+}
