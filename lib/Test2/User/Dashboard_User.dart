@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Admin/View_events_Admin.dart';
+import 'Display_order_User.dart';
 import 'Home_User.dart';
 import 'Login_User.dart';
 import 'View_Cart_User.dart';
@@ -22,6 +23,7 @@ class _Hope_User_DashboardState extends State<Hope_User_Dashboard> {
     Hope_Admin_event_Display(),
     donation_Display(),
     Viewcart_User(),
+    My_Order_User(),
   ];
 
   @override
@@ -294,10 +296,16 @@ class _Hope_User_DashboardState extends State<Hope_User_Dashboard> {
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.add_shopping_cart),
             label: 'view cart',
             backgroundColor: Colors.blue,
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'My orders',
+            backgroundColor: Colors.blue,
+          ),
+
 
         ],
       ),

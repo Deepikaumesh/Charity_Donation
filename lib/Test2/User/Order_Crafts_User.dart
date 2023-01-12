@@ -6,13 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 class Order_Crafts_User extends StatefulWidget {
+  final cart_data;
+
+  const Order_Crafts_User({this.cart_data});
+
   @override
-  _Order_Crafts_UserState createState() =>
-      _Order_Crafts_UserState();
+  _Order_Crafts_UserState createState() => _Order_Crafts_UserState();
 }
 
-class _Order_Crafts_UserState
-    extends State<Order_Crafts_User> {
+class _Order_Crafts_UserState extends State<Order_Crafts_User> {
   TextEditingController name = new TextEditingController();
   TextEditingController bank = new TextEditingController();
   TextEditingController ac_no = new TextEditingController();
@@ -28,7 +30,7 @@ class _Order_Crafts_UserState
     name = TextEditingController();
     bank = TextEditingController();
     ac_no = TextEditingController();
-    total_amt = TextEditingController();
+    total_amt = TextEditingController(text: widget.cart_data);
 
     status = false;
     message = "";
@@ -38,8 +40,7 @@ class _Order_Crafts_UserState
 
   Future<void> submitData() async {
     var send = await http.post(
-        Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/payment.php"),
+        Uri.parse("http://192.168.29.64/MySampleApp/Charity_Hope/payment.php"),
         body: {
           "name": name.text,
           "bank": bank.text,
@@ -157,10 +158,10 @@ class _Order_Crafts_UserState
                     child: TextFormField(
                       controller: ac_no,
                       validator: (value) {
-                        if (value!.isEmpty || value!.length>10) {
+                        if (value!.isEmpty || value!.length > 10) {
                           return "Please enter  valid account number";
                         }
-                        if (value.length <10) {
+                        if (value.length < 10) {
                           return "account number should be 10 digit";
                         }
                         return null;
@@ -190,7 +191,7 @@ class _Order_Crafts_UserState
                         return null;
                       },
                       decoration: InputDecoration(
-                      //  labelText: "Enter n",
+                        //  labelText: "Enter n",
                         label: Text("Total amount"),
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
@@ -222,8 +223,13 @@ class _Order_Crafts_UserState
                     },
                     child: Text('Submit'),
                   ),
-                  SizedBox(height: 15,),
-                  Text(status ? message : message,style: GoogleFonts.adamina(),),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    status ? message : message,
+                    style: GoogleFonts.adamina(),
+                  ),
                 ],
               ),
             ),

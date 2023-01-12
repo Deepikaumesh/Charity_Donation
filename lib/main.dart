@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'Test2/Screen/Hope_main_way.dart';
 
 var uid_user ='';
+var access_total_amt ='';
 
 
 // // @dart=2.9

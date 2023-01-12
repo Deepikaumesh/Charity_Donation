@@ -279,8 +279,9 @@ class _Home_UserState extends State<Home_User> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 30,
               ),
+             
             ],
           ),
         ),

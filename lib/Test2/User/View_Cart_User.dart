@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'Order_Crafts_User.dart';
 
 
@@ -71,6 +72,10 @@ class _Viewcart_UserState extends State<Viewcart_User> {
         qty: singleUser["qty"].toString(),
         cid: singleUser["cartid"].toString(),
       );
+      print("this is craft id"+singleUser["craft_id"]);
+
+
+    //  craftid_check = singleUser["craft_id"];
 
       //Adding user to the list.
       users.add(user);
@@ -119,6 +124,12 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                 );
               } else {
                 List<Cart_Model> _user = snapshot.data;
+
+                print("test"+returnTotalAmount(_user));
+
+                access_total_amt =returnTotalAmount(_user);
+                print("test 2"+access_total_amt);
+
                 return
                   Flexible(
                     child: Column(
@@ -130,6 +141,9 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                               shrinkWrap: true,
                               itemCount: snapshot.data.length,
                               itemBuilder: (ctx, index) {
+
+
+
                                 return
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
@@ -294,14 +308,15 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700, fontSize: 20),
                                   ),
-                                  Text(
-                                    "\$${returnTotalAmount(_user)}",
+                                  Text("\$${returnTotalAmount(_user)}",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700, fontSize: 20),
                                   ),
+
                                 ],
                               ),
                             )),
+
                         SizedBox(height: 20,)
 ,                        Align(
                             alignment: Alignment.bottomCenter,
@@ -318,7 +333,7 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                                 ),
                               ),
                               onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Crafts_User()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Crafts_User(cart_data: access_total_amt,)));
                               },
                             )),
                       ],),
@@ -359,9 +374,13 @@ class _Viewcart_UserState extends State<Viewcart_User> {
       totalAmount = totalAmount +
           (double.parse(_user[i].price) *
               double.parse(_user[i].qty));
+
     }
     return totalAmount.toString();
+
   }
+
+
 
 
 
