@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import '../../main.dart';
+import 'package:intl/intl.dart';
 
 class Hope_User_food_donation_bookings extends StatefulWidget {
   @override
@@ -17,6 +19,7 @@ class _Hope_User_food_donation_bookingsState
   TextEditingController donor = new TextEditingController();
   TextEditingController food = new TextEditingController();
 
+
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
   late bool status;
@@ -29,6 +32,7 @@ class _Hope_User_food_donation_bookingsState
     food = TextEditingController();
 
 
+
     status = false;
     message = "";
 
@@ -38,7 +42,7 @@ class _Hope_User_food_donation_bookingsState
   Future<void> submitData() async {
     var send = await http.post(
         Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/user_food_donation_bookings.php"),
+            "http://$ip/MySampleApp/Charity_Hope/user_food_donation_bookings.php"),
         body: {
           "date": date.text,
           "food": food.text,
@@ -128,6 +132,20 @@ class _Hope_User_food_donation_bookingsState
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
+                      onTap: ()async{
+                        DateTime? pickeddate= await showDatePicker
+                          (context: context,
+                            initialDate: DateTime.now(),
+                            firstDate:DateTime(2000),
+                            lastDate: DateTime(2101));
+                        if(pickeddate !=null){
+                          setState(() {
+                            date.text =DateFormat('yyyy-MM-dd').format(pickeddate);
+
+                          });
+                        }
+                      },
+
                       controller: date,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -137,6 +155,7 @@ class _Hope_User_food_donation_bookingsState
                         return null;
                       },
                       decoration: InputDecoration(
+                        icon: Icon(Icons.calendar_today_rounded),
                         labelText: "Pick date",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
@@ -173,9 +192,7 @@ class _Hope_User_food_donation_bookingsState
                     height: 30,
                   ),
 
-                  SizedBox(
-                    height: 30,
-                  ),
+
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: StadiumBorder(),

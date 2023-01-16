@@ -5,6 +5,7 @@ import '../Admin/Add_event_Admin.dart';
 import 'Food_donation_bookings_User.dart';
 import 'Event_Registration_User_.dart';
 import 'Money_Donation_User.dart';
+import 'Searchbar_Page.dart';
 
 
 
@@ -116,18 +117,18 @@ class UserDrawer extends StatelessWidget {
           title: Text("Food  donation bookings",
               style: GoogleFonts.prompt(fontSize: 15)),
         ),
-        // ListTile(
-        //   onTap: () {
-        //     // Navigator.push(
-        //     //     context, MaterialPageRoute(builder: (context) => Hope_User_food_donation_bookings()));
-        //   },
-        //   leading: Icon(
-        //     Icons.cancel,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("Food  donation bookings",
-        //       style: GoogleFonts.prompt(fontSize: 15)),
-        // ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Searchbar_Page()));
+          },
+          leading: Icon(
+            Icons.cancel,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("searchbar",
+              style: GoogleFonts.prompt(fontSize: 15)),
+        ),
 
 
       ]),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'Money_Donation_User.dart';
 import 'Money_Donation_detail_page_User.dart';
 
@@ -36,7 +37,7 @@ class _Usre_donation_DisplayState extends State<Usre_donation_Display> {
     //replace your restFull API here.
 
     final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/donation_display.php"));
+        "http://$ip/MySampleApp/Charity_Hope/donation_display.php"));
 
     var responseData = json.decode(response.body);
 

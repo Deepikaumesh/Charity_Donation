@@ -51,7 +51,8 @@ class _Viewcart_UserState extends State<Viewcart_User> {
   Future<List<Cart_Model>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/user_view_cart.php";
+
+        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php";
    // "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/User/hope_cart_display_user.php";
 
     final response = await http.get(Uri.parse(url));
@@ -72,7 +73,7 @@ class _Viewcart_UserState extends State<Viewcart_User> {
         qty: singleUser["qty"].toString(),
         cid: singleUser["cartid"].toString(),
       );
-      print("this is craft id"+singleUser["craft_id"]);
+    //  print("this is craft id"+singleUser["craft_id"]);
 
 
     //  craftid_check = singleUser["craft_id"];
@@ -128,7 +129,7 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                 print("test"+returnTotalAmount(_user));
 
                 access_total_amt =returnTotalAmount(_user);
-                print("test 2"+access_total_amt);
+                //print("test 2"+access_total_amt);
 
                 return
                   Flexible(

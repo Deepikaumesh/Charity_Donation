@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class Hope_Admin_Registration extends StatefulWidget {
   const Hope_Admin_Registration({Key? key}) : super(key: key);
 
@@ -304,7 +306,7 @@ class _Hope_Admin_RegistrationState extends State<Hope_Admin_Registration> {
 
   Future RegistrationUser() async {
     var APIURL =
-     "http://192.168.29.64/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
+     "http://$ip/MySampleApp/Charity_Hope/Hope_Admin_Registration.php";
       //  "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Registration.php";
 
     //json maping user entered details

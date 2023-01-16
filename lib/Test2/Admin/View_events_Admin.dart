@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'View_event_detail_page_Admin.dart';
 
 //Creating a class user to store the data;
@@ -196,7 +197,7 @@ class _Hope_Admin_event_DisplayState extends State<Hope_Admin_event_Display> {
     //replace your restFull API here.
 
     final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/event_Display.php"));
+        "http://$ip/MySampleApp/Charity_Hope/event_Display.php"));
 
     var responseData = json.decode(response.body);
 

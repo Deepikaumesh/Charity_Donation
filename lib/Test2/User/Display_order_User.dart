@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'Order_Crafts_User.dart';
 
 //Creating a class user to store the data;
@@ -16,6 +17,7 @@ class Order_model {
   final String ac_no;
   final String total_amt;
   final String cid;
+  final String craft_id;
 
   Order_model({
     required this.id,
@@ -24,6 +26,7 @@ class Order_model {
     required this.ac_no,
     required this.total_amt,
     required this.cid,
+    required this.craft_id,
   });
 }
 
@@ -39,7 +42,7 @@ class _My_Order_UserState extends State<My_Order_User> {
   Future<List<Order_model>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/user_view_cart.php";
+        "http://$ip/MySampleApp/Charity_Hope/view_Payment.php";
     // "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/User/hope_cart_display_user.php";
 
     final response = await http.get(Uri.parse(url));
@@ -56,6 +59,7 @@ class _My_Order_UserState extends State<My_Order_User> {
         ac_no: singleUser["ac_no"].toString(),
         total_amt: singleUser["total_amt"].toString(),
         cid: singleUser["cartid"].toString(),
+        craft_id: singleUser["craft_id"].toString(),
       );
 
       //Adding user to the list.
@@ -73,7 +77,7 @@ class _My_Order_UserState extends State<My_Order_User> {
         backgroundColor: Colors.pink.shade300,
         centerTitle: true,
         title: Text(
-          "My Cart",
+          "My order",
           style: GoogleFonts.prompt(fontSize: 22),
         ),
       ),
@@ -160,6 +164,11 @@ class _My_Order_UserState extends State<My_Order_User> {
                                                     "Price : " +
                                                         snapshot
                                                             .data[index].bank,
+                                                  ),
+                                                  Text(
+                                                    "craft id: " +
+                                                        snapshot
+                                                            .data[index].craft_id,
                                                   ),
 
                                                   // Text(

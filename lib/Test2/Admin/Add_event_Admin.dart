@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class Hope_Admin_event_registration extends StatefulWidget {
   @override
   _Hope_Admin_event_registrationState createState() =>
@@ -39,7 +41,7 @@ class _Hope_Admin_event_registrationState
   Future<void> submitData() async {
     var send = await http.post(
         Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/event_registration.php"),
+            "http://$ip/MySampleApp/Charity_Hope/event_registration.php"),
         body: {
           "name": name.text,
           "event_date": event_date.text,

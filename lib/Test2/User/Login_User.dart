@@ -194,7 +194,7 @@ class _Hope_use_LoginState extends State<Hope_use_Login> {
 
   Future Hope_User_Login() async {
     //var url ="https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/Admin/Hope_Admin_Login.php"; //intego wifi password
-    var url ="http://192.168.29.64/MySampleApp/Charity_Hope/Hope_User_login.php";
+    var url ="http://$ip/MySampleApp/Charity_Hope/Hope_User_login.php";
     var response = await http.post(Uri.parse(url),
         headers: {
           'Accept':'application/json'

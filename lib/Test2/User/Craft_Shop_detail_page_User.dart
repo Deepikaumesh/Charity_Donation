@@ -31,8 +31,15 @@ class _User_View_craft_shop_Detail_PageState
 
   Future<void> access_id() async {
     final _sharedPrefs = await SharedPreferences.getInstance();
-    final  ui = _sharedPrefs.getString("hope_userid");
-    uid_user =ui!;
+    setState(() {
+      final  ui = _sharedPrefs.getString("hope_userid");
+      //uid_user =ui!;
+      if(uid_user == null){
+        uid_user=ui!;
+      }
+    });
+
+
 
   }
 
@@ -298,7 +305,9 @@ class _User_View_craft_shop_Detail_PageState
                 ),
                 onPressed: () {
                   setState(() {});
+
                   submitData();
+
                   showDialog(
                       context: context,
                       builder: (_) {

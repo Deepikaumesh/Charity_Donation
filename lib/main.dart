@@ -10,7 +10,10 @@ var access_total_amt ='';
 // const Hope_Admin_Key = "Admin LoggedIn";
 // const Hope_user_Key = "user LoggedIn";
 
+var ip='192.168.29.64';
+
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   @override

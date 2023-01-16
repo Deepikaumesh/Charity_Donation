@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class Hope_User_Money_Donation extends StatefulWidget {
   @override
   _Hope_User_Money_DonationState createState() =>
@@ -43,7 +45,7 @@ class _Hope_User_Money_DonationState
   Future<void> submitData() async {
     var send = await http.post(
         Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/user_money_donation.php"),
+            "http://$ip/MySampleApp/Charity_Hope/user_money_donation.php"),
         body: {
           "name": name.text,
           "place": place.text,

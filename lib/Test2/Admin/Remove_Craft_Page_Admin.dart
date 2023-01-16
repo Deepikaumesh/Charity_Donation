@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import '../../Travel/Dashboard_with_bottom_navigation_bar.dart';
+import '../../main.dart';
 
 
 class craft_model {
@@ -265,7 +266,7 @@ class _Admin_remove_Craftitem_pageState
 
   Future<void> remove_admin_craft(String id) async {
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/admin_craft_delte.php";
+        "http://$ip/MySampleApp/Charity_Hope/admin_craft_delte.php";
     var res = await http.post(Uri.parse(url), body: {
       "id": id,
     });

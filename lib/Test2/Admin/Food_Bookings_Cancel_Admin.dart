@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'Dashboard_Admin.dart';
 
 //Creating a class user to store the data;
@@ -35,7 +36,7 @@ class _food_bookings_cancelState extends State<food_bookings_cancel> {
   Future<List<food_donation_model>> getRequest() async {
     //replace your restFull API here.
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/food_donation.php";
+        "http://$ip/MySampleApp/Charity_Hope/food_donation.php";
 
     final response = await http.get(Uri.parse(url));
 

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:chari/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -50,7 +51,7 @@ class _Admin_add_craft_itemState extends State<Admin_add_craft_item> {
 
   Future uploadImage() async {
     final uri = Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/Admin_add_craft_item.php");
+        "http://$ip/MySampleApp/Charity_Hope/Admin_add_craft_item.php");
     // "http://192.168.29.64/MySampleApp/Scanner_App/Merchant/Add_Product_to_db.php");
     var request = http.MultipartRequest('POST', uri);
     request.fields['price'] = price.text;

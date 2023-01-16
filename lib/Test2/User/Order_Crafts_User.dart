@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
+
 class Order_Crafts_User extends StatefulWidget {
   final cart_data;
 
@@ -40,7 +42,7 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
 
   Future<void> submitData() async {
     var send = await http.post(
-        Uri.parse("http://192.168.29.64/MySampleApp/Charity_Hope/payment.php"),
+        Uri.parse("http://$ip/MySampleApp/Charity_Hope/payment.php"),
         body: {
           "name": name.text,
           "bank": bank.text,
@@ -119,7 +121,7 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
                       },
                       controller: name,
                       decoration: InputDecoration(
-                        labelText: "Enter event name",
+                        labelText: "Enter your name",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),

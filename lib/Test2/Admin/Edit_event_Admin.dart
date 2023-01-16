@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+import '../../main.dart';
 import 'View_events_Admin.dart';
 
 
@@ -31,7 +32,7 @@ class _Hope_Admin_Edit_eventState extends State<Hope_Admin_Edit_event> {
   submit() async {
     final response = await http.post(
         Uri.parse(
-            "http://192.168.29.64/MySampleApp/Charity_Hope/Admin_Edit_Event.php"),
+            "http://$ip/MySampleApp/Charity_Hope/Admin_Edit_Event.php"),
         body: {
           "id": widget.data_user.id.toString(),
           "name": ename.text,

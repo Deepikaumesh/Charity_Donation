@@ -14,6 +14,7 @@ import '../Admin/View_Craft_Admin.dart';
 import '../Admin/View_events_Admin.dart';
 import '../Admin/View_more_Page_food_bookings_Admin.dart';
 
+import 'Searchbar_Page.dart';
 import 'View_more_Page_food_bookings_User.dart';
 import 'Display_Craf_User_.dart';
 
@@ -62,9 +63,12 @@ class _Home_UserState extends State<Home_User> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
-
               SizedBox(height: 20,),
+
+              _searchBar_field(),
+
+
+              SizedBox(height: 10,),
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width / 1.1,
@@ -281,7 +285,8 @@ class _Home_UserState extends State<Home_User> {
               SizedBox(
                 height: 30,
               ),
-             
+
+
             ],
           ),
         ),
@@ -300,5 +305,28 @@ class _Home_UserState extends State<Home_User> {
         context,
         MaterialPageRoute(builder: (ctx1) => Hope_Admin_Login()),
             (route) => false);
+  }
+
+  _searchBar_field() {
+    return Padding(
+      padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+      child: TextField(
+        textAlign: TextAlign.start,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: new InputDecoration(
+          prefixIcon:Icon(Icons.search),
+          border: new OutlineInputBorder(
+            borderSide: new BorderSide(color: Colors.teal),
+            //borderRadius: BorderRadius.(40),
+          ),
+          hintText: 'Search food....',
+          //  icon: Icon(Icons.search),
+        ),
+       onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Searchbar_Page()));
+       },
+
+      ),
+    );
   }
 }
