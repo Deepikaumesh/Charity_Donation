@@ -1,4 +1,5 @@
 <?php
+include 'set_ip.php';
 $servername = 'localhost';
 $username = 'root';
 $password = '';
@@ -28,7 +29,7 @@ if ($connection->connect_error) {
  
  
  
- $file_name2="http://192.168.29.64/MySampleApp/Charity_Hope/image_uploaded/".$file_name1;
+ $file_name2="http://$ip_address/MySampleApp/Charity_Hope/image_uploaded/".$file_name1;
 
 
  $sql = "INSERT INTO `craft`( `craft_id`,`name`,`price`,`description`,`image`) VALUES 

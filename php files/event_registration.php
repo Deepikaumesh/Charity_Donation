@@ -22,6 +22,28 @@ $connection = mysqli_connect($servername, $username, $password, $database);
      $event_date=mysqli_real_escape_string($connection,$event_date);
       $event_time=mysqli_real_escape_string($connection,$event_time);
        $description=mysqli_real_escape_string($connection,$description);
+	   
+	   
+	   $findexist="select * from event where name = '".$name."' AND event_date = '".$event_date."'AND event_time = '".$event_time."'";
+
+
+        $resultsearch=mysqli_query($connection,$findexist);
+        
+  
+    if(mysqli_num_rows($resultsearch)>0)
+    {
+          while($row=mysqli_fetch_array($resultsearch))
+          {
+              // $result["success"] = "3";
+              // $result["message"] = "user Already exist";
+			    $result["error"] = true;
+              $result["message"] = "$name already registered on $event_date at $event_time ";
+
+              echo json_encode($result);
+              //mysqli_close($connection);
+          }}
+  
+else{
 
       
 
@@ -37,16 +59,17 @@ $connection = mysqli_connect($servername, $username, $password, $database);
         $result["error"] = false;
         $result["message"] = "Event Registered successfully";
 	}
-	else{
-		$result["error"] = true;
-        $result["message"] = "Registration not success";
-	}
+	// else{
+		// $result["error"] = true;
+        // $result["message"] = "Registration not success";
+	// }
 
         echo json_encode($result);
         mysqli_close($connection);
 
     
 
-	}
+}
+}
 
 ?>
