@@ -77,7 +77,7 @@ class UserDrawer extends StatelessWidget {
                     builder: (context) => Hope_User_event_registration()));
           },
           leading: Icon(
-            Icons.add,
+            Icons.event,
             color: Colors.blueGrey.shade900,
           ),
           title: Text("Event Registration",
@@ -111,24 +111,24 @@ class UserDrawer extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => Hope_User_food_donation_bookings()));
           },
           leading: Icon(
-            Icons.cancel,
+            Icons.fastfood_rounded,
             color: Colors.blueGrey.shade900,
           ),
           title: Text("Food  donation bookings",
               style: GoogleFonts.prompt(fontSize: 15)),
         ),
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Searchbar_Page()));
-          },
-          leading: Icon(
-            Icons.cancel,
-            color: Colors.blueGrey.shade900,
-          ),
-          title: Text("searchbar",
-              style: GoogleFonts.prompt(fontSize: 15)),
-        ),
+        // ListTile(
+        //   onTap: () {
+        //     Navigator.push(
+        //         context, MaterialPageRoute(builder: (context) => Searchbar_Page()));
+        //   },
+        //   leading: Icon(
+        //     Icons.cancel,
+        //     color: Colors.blueGrey.shade900,
+        //   ),
+        //   title: Text("searchbar",
+        //       style: GoogleFonts.prompt(fontSize: 15)),
+        // ),
 
 
       ]),

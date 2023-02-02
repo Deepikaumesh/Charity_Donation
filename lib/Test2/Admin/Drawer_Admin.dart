@@ -62,7 +62,7 @@ class MainDrawer extends StatelessWidget {
                     builder: (context) => Hope_Admin_event_registration()));
           },
           leading: Icon(
-            Icons.add,
+            Icons.event,
             color: Colors.blueGrey.shade900,
           ),
           title: Text("Add Events",
