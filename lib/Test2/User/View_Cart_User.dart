@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 import '../../main.dart';
 import 'Order_Crafts_User.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -50,9 +51,13 @@ class _Viewcart_UserState extends State<Viewcart_User> {
   //Applying get request.
   Future<List<Cart_Model>> getRequest() async {
     //replace your restFull API here.
+    final _sharedPrefs = await SharedPreferences.getInstance();
+    final  ui = _sharedPrefs.getString("hope_userid");
+
     String url =
 
-        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php";
+        // "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php";
+        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php?uid="+ui!;
    // "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/User/hope_cart_display_user.php";
 
     final response = await http.get(Uri.parse(url));
