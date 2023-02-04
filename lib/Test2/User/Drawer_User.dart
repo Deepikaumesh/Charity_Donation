@@ -6,6 +6,7 @@ import 'Food_donation_bookings_User.dart';
 import 'Event_Registration_User_.dart';
 import 'Money_Donation_User.dart';
 import 'Searchbar_Page.dart';
+import 'cancel_food_donations.dart';
 
 
 
@@ -85,26 +86,6 @@ class UserDrawer extends StatelessWidget {
                 fontSize: 15,
               )),
         ),
-
-        // ListTile(
-        //   onTap: () {
-        //     Navigator.push(
-        //         context,
-        //         MaterialPageRoute(
-        //             builder: (context) => Hope_User_event_registration()));
-        //   },
-        //   leading: Icon(
-        //     Icons.cancel,
-        //     color: Colors.blueGrey.shade900,
-        //   ),
-        //   title: Text("Cancel event Registration",
-        //       style: GoogleFonts.prompt(
-        //         fontSize: 15,
-        //       )),
-        // ),
-
-
-
         ListTile(
           onTap: () {
             Navigator.push(
@@ -117,6 +98,27 @@ class UserDrawer extends StatelessWidget {
           title: Text("Food  donation bookings",
               style: GoogleFonts.prompt(fontSize: 15)),
         ),
+
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => User_food_donation_cancel()));
+          },
+          leading: Icon(
+            Icons.cancel,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Cancel food bookings",
+              style: GoogleFonts.prompt(
+                fontSize: 15,
+              )),
+        ),
+
+
+
+
         // ListTile(
         //   onTap: () {
         //     Navigator.push(

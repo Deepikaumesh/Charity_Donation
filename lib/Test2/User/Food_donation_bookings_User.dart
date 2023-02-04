@@ -18,6 +18,7 @@ class _Hope_User_food_donation_bookingsState
   TextEditingController date = new TextEditingController();
   TextEditingController donor = new TextEditingController();
   TextEditingController food = new TextEditingController();
+  TextEditingController uid = new TextEditingController();
 
 
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
@@ -30,6 +31,7 @@ class _Hope_User_food_donation_bookingsState
     date = TextEditingController();
     donor = TextEditingController();
     food = TextEditingController();
+    uid = TextEditingController();
 
 
 
@@ -40,6 +42,7 @@ class _Hope_User_food_donation_bookingsState
   }
 
   Future<void> submitData() async {
+
     var send = await http.post(
         Uri.parse(
             "http://$ip/MySampleApp/Charity_Hope/user_food_donation_bookings.php"),
@@ -47,6 +50,7 @@ class _Hope_User_food_donation_bookingsState
           "date": date.text,
           "food": food.text,
           "donor": donor.text,
+          "uid":uid_user,
         });
 
     if (send.statusCode == 200) {
@@ -214,6 +218,7 @@ class _Hope_User_food_donation_bookingsState
                   ),
                   SizedBox(height: 15,),
                   Text(status ? message : message,style: GoogleFonts.adamina(),),
+
                 ],
               ),
             ),
