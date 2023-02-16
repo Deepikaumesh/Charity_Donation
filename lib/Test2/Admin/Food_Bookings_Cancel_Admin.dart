@@ -240,7 +240,7 @@ class _food_bookings_cancelState extends State<food_bookings_cancel> {
   }
   Future<void> cancel_food(String id) async {
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/cancel_food_bookings.php";
+        "http://$ip/MySampleApp/Charity_Hope/Admin_delete_food_bookings.php";
     var res = await http.post(Uri.parse(url), body: {
       "id": id,
     });

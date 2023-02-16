@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
+import 'Dashboard_User.dart';
 import 'Food_donation_bookings_User.dart';
 import 'Food_donation_details_page_User_.dart';
 
@@ -185,9 +187,50 @@ class _User_food_donation_cancelState extends State<User_food_donation_cancel> {
                                                   ),
                                                   SizedBox(width: 10,),
                                                   Text("Cancel",style: TextStyle(color: Colors.orange),),
-                                                  IconButton(onPressed: (){
-
-                                                  }, icon: Icon(Icons.cancel))
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Viewcart_customer()));
+                                                        // setState(() {
+                                                        //   delrecord(snapshot
+                                                        //       .data[index].cid);
+                                                        // });
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (_) {
+                                                              return AlertDialog(
+                                                                shape: RoundedRectangleBorder(
+                                                                  borderRadius: BorderRadius.circular(16),
+                                                                ),
+                                                                title: Text("Remove item",style: TextStyle(color: Colors.pink.shade500),),
+                                                                content: Text(
+                                                                    "Are You sure want to remove the product from cart"),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () {
+                                                                      setState(() {
+                                                                        delrecord(snapshot
+                                                                            .data[index].id);
+                                                                      });
+                                                                      Navigator.pushReplacement(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (context) =>
+                                                                                  Hope_User_Dashboard()));
+                                                                    },
+                                                                    child: Text("ok",style: TextStyle(color: Colors.pink.shade500,)),),
+                                                                  TextButton(
+                                                                    onPressed: () {
+                                                                      Navigator.pop(context);
+                                                                    },
+                                                                    child: Text("cancel",style: TextStyle(color: Colors.pink.shade500)),),
+                                                                ],
+                                                              );
+                                                            });
+                                                      },
+                                                      icon: Icon(Icons.clear,
+                                                          size: 20,
+                                                          color: Colors
+                                                              .red.shade900)),
                                                 ],  ),
 
                                             ),
@@ -241,4 +284,28 @@ class _User_food_donation_cancelState extends State<User_food_donation_cancel> {
       ),
     );
   }
+
+
+  Future<void> delrecord(String id) async {
+    String url =
+        "http://$ip/MySampleApp/Charity_Hope/delete_food_bookings_user.php";
+    var res = await http.post(Uri.parse(url), body: {
+      "id": id,
+
+    });
+    var resoponse = jsonDecode(res.body);
+    if (resoponse["success"] == "true") {
+
+
+      print(id);
+      // setState(() {
+      getRequest();
+      // });
+
+    } else {
+      print("some issue");
+    }
+  }
+
+
 }
