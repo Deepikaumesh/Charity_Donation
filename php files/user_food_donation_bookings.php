@@ -8,12 +8,13 @@ $database = "charity_hope_db";
 $connection = mysqli_connect($servername, $username, $password, $database);
 
           if( !empty($_POST["date"])and !empty($_POST["donor"])
-			  and !empty($_POST["food"]))
+			  and !empty($_POST["food"]) and !empty($_POST["uid"]))
 {
 
       $date = $_POST["date"];
     $donor= $_POST["donor"];
     $food= $_POST["food"];
+	 $uid= $_POST["uid"];
 
     
                
@@ -21,6 +22,7 @@ $connection = mysqli_connect($servername, $username, $password, $database);
       $date=mysqli_real_escape_string($connection,$date);
      $donor=mysqli_real_escape_string($connection,$donor);
       $food=mysqli_real_escape_string($connection,$food);
+	  $uid=mysqli_real_escape_string($connection,$uid);
 	 
 	   
 	    $findexist="select * from  food_donation where date = '".$date."' AND food = '".$food."'";
@@ -50,7 +52,7 @@ else{
 
 
 
-    $sql = "INSERT INTO   food_donation (date,donor,food) VALUES ('".$date."','".$donor."','".$food."')";
+    $sql = "INSERT INTO   food_donation (date,donor,food,uid) VALUES ('".$date."','".$donor."','".$food."','".$uid."')";
 
 
     if ( mysqli_query($connection, $sql) ) {

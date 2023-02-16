@@ -13,12 +13,18 @@ if ($connection->connect_error) {
 }
 
 
-      // $uid = $_GET['uid'];
+     $uid = $_GET['uid'];
      // $uid =58;
 
    //$uid=mysqli_real_escape_string($connection,$uid);
- $sql = "SELECT cart.id as cartid,qty,uid, craft.* FROM cart inner join craft ON cart.craft_id =craft.craft_id
- WHERE uid=3"; 
+ // $sql = "SELECT cart.id as cartid,qty,uid, craft.* FROM cart inner join craft ON cart.craft_id =craft.craft_id
+ // WHERE uid=3"; 
+  $sql = "SELECT cart.id as cartid,qty,uid, craft.* FROM cart inner join craft ON cart.craft_id =craft.craft_id
+ WHERE uid=".$uid; 
+ 
+ //  
+
+    
 
  
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
