@@ -7,20 +7,22 @@ import 'package:http/http.dart' as http;
 
 import '../../main.dart';
 
-class Order_Crafts_User extends StatefulWidget {
+class Payment_User extends StatefulWidget {
   final cart_data;
 
-  const Order_Crafts_User({this.cart_data});
+  const Payment_User({this.cart_data});
 
   @override
-  _Order_Crafts_UserState createState() => _Order_Crafts_UserState();
+  _Payment_UserState createState() => _Payment_UserState();
 }
 
-class _Order_Crafts_UserState extends State<Order_Crafts_User> {
+class _Payment_UserState extends State<Payment_User> {
   TextEditingController name = new TextEditingController();
   TextEditingController bank = new TextEditingController();
+  TextEditingController phone = new TextEditingController();
   TextEditingController ac_no = new TextEditingController();
   TextEditingController total_amt = new TextEditingController();
+  TextEditingController uid = new TextEditingController();
 
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
@@ -31,8 +33,10 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
   void initState() {
     name = TextEditingController();
     bank = TextEditingController();
+    phone = TextEditingController();
     ac_no = TextEditingController();
     total_amt = TextEditingController(text: widget.cart_data);
+    uid = new TextEditingController();
 
     status = false;
     message = "";
@@ -46,8 +50,10 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
         body: {
           "name": name.text,
           "bank": bank.text,
+          "phone": phone.text,
           "ac_no": ac_no.text,
           "total_amt": total_amt.text,
+          "uid":uid_user,
         });
 
     if (send.statusCode == 200) {
@@ -62,6 +68,7 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
       } else {
         name.clear();
         bank.clear();
+        phone.clear();
         ac_no.clear();
         total_amt.clear();
 
@@ -156,6 +163,29 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
                     height: 30,
                   ),
                   Container(
+                    // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                    child: TextFormField(
+                      controller: phone,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Phone number Should not empty!";
+                        }
+
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Enter your phone number",
+                        border: new OutlineInputBorder(
+                          borderSide: new BorderSide(color: Colors.teal),
+                        ),
+                      ),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
                     //  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
                       controller: ac_no,
@@ -208,7 +238,7 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: StadiumBorder(),
-                      backgroundColor: Colors.pink.shade200,
+                      backgroundColor: Colors.blueGrey.shade600,
                       padding: EdgeInsets.only(
                           left: 110, right: 110, top: 20, bottom: 20),
                     ),
@@ -217,8 +247,37 @@ class _Order_Crafts_UserState extends State<Order_Crafts_User> {
                         setState(() {
                           submitData();
                         });
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                title: Text("Payment",style: TextStyle(color: Colors.pink.shade500),),
+                                content: Text(
+                                    "your payment of Rs. $access_total_amt successfull"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Payment_User()));
+                                    },
+                                    child: Text("ok",style: TextStyle(color: Colors.pink.shade500,)),),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text("cancel",style: TextStyle(color: Colors.pink.shade500)),),
+                                ],
+                              );
+                            });
                         name.clear();
                         bank.clear();
+                        phone.clear();
                         ac_no.clear();
                         total_amt.clear();
                       }

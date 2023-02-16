@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import '../../main.dart';
-import 'Order_Crafts_User.dart';
+import 'Payment_user.dart';
 
 //Creating a class user to store the data;
 class Order_model {
@@ -316,7 +316,7 @@ class _My_Order_UserState extends State<My_Order_User> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            Order_Crafts_User()));
+                                            Payment_User()));
                               },
                             )),
                       ],

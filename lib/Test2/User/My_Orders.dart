@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 //Creating a class user to store the data;
-class Cart_Model {
+class Cart_model_display_orderitems {
   final String id;
   final String craft_id;
   final String qty;
@@ -27,7 +27,7 @@ class Cart_Model {
 
 
 
-  Cart_Model({
+  Cart_model_display_orderitems({
     required this.id,
     required this.name,
     required this.craft_id,
@@ -40,34 +40,31 @@ class Cart_Model {
   });
 }
 
-class Viewcart_User extends StatefulWidget {
+class My_Orders extends StatefulWidget {
   @override
-  _Viewcart_UserState createState() => _Viewcart_UserState();
+  _My_OrdersState createState() => _My_OrdersState();
 }
 
-class _Viewcart_UserState extends State<Viewcart_User> {
+class _My_OrdersState extends State<My_Orders> {
   num subTotal = 0;
 
   //Applying get request.
-  Future<List<Cart_Model>> getRequest() async {
+  Future<List<Cart_model_display_orderitems>> getRequest() async {
     //replace your restFull API here.
     final _sharedPrefs = await SharedPreferences.getInstance();
     final  ui = _sharedPrefs.getString("hope_userid");
 
     String url =
-
-        // "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php";
-        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php?uid="+ui!;
-   // "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/User/hope_cart_display_user.php";
+    "http://$ip/MySampleApp/Charity_Hope/Display_order_items.php?uid="+ui!;
 
     final response = await http.get(Uri.parse(url));
 
     var responseData = json.decode(response.body);
 
     //Creating a list to store input data;
-    List<Cart_Model> users = [];
+    List<Cart_model_display_orderitems> users = [];
     for (var singleUser in responseData) {
-      Cart_Model user = Cart_Model(
+      Cart_model_display_orderitems user = Cart_model_display_orderitems(
 
         id: singleUser["id"].toString(),
         name: singleUser["name"].toString(),
@@ -78,10 +75,10 @@ class _Viewcart_UserState extends State<Viewcart_User> {
         qty: singleUser["qty"].toString(),
         cid: singleUser["cartid"].toString(),
       );
-    //  print("this is craft id"+singleUser["craft_id"]);
+      //  print("this is craft id"+singleUser["craft_id"]);
 
 
-    //  craftid_check = singleUser["craft_id"];
+      //  craftid_check = singleUser["craft_id"];
 
       //Adding user to the list.
       users.add(user);
@@ -93,11 +90,27 @@ class _Viewcart_UserState extends State<Viewcart_User> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            )),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.card_giftcard,
+                color: Colors.white,
+              )),
+        ],
         automaticallyImplyLeading: false,
         backgroundColor:Colors.pink.shade300,
         centerTitle: true,
         title: Text(
-          "My Cart",
+          "My orders",
           style: GoogleFonts.prompt(fontSize: 22),
         ),
       ),
@@ -129,12 +142,6 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                   ),
                 );
               } else {
-                List<Cart_Model> _user = snapshot.data;
-
-                print("test"+returnTotalAmount(_user));
-
-                access_total_amt =returnTotalAmount(_user);
-                //print("test 2"+access_total_amt);
 
                 return
                   Flexible(
@@ -183,7 +190,7 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                            //    Spacer(),
+                                                //    Spacer(),
                                                 SizedBox(width: 20,),
                                                 Column(
                                                   crossAxisAlignment:
@@ -201,15 +208,6 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                                                     ),
 
 
-                                                    // Text(
-                                                    //   "Sub Total : " +
-                                                    //       ProductCalculations
-                                                    //           .getTotalRateFromString(
-                                                    //           productPrice: snapshot
-                                                    //               .data[index].price,
-                                                    //           Quantity: snapshot
-                                                    //               .data[index]
-                                                    //               .qty),
                                                     // ),
 
                                                     Row(
@@ -271,20 +269,6 @@ class _Viewcart_UserState extends State<Viewcart_User> {
                                                     ),
                                                   ],
                                                 ),
-                                                // Padding(
-                                                //     padding: EdgeInsets.only(
-                                                //         top: 20, bottom: 20, left: 20),
-                                                //
-                                                //     child: IconButton(
-                                                //         onPressed: () {
-                                                //           showModalBottomSheet(context: context, builder: (context) =>
-                                                //               Merchant_Update_Bottomsheet(
-                                                //                 data_user: snapshot
-                                                //                     .data[index],
-                                                //               ));
-                                                //         },
-                                                //         icon: Icon(
-                                                //             Icons.arrow_forward_ios)))
                                               ],
                                             ),
                                           ),
@@ -301,47 +285,9 @@ class _Viewcart_UserState extends State<Viewcart_User> {
 
 
 
-                        Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              height: 50,
-                              color: Colors.pink.shade50,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "Total",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w700, fontSize: 20),
-                                  ),
-                                  Text("\$${returnTotalAmount(_user)}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w700, fontSize: 20),
-                                  ),
-
-                                ],
-                              ),
-                            )),
 
                         SizedBox(height: 20,)
-,                        Align(
-                            alignment: Alignment.bottomCenter,
-                            child: GestureDetector(
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                color: Colors.orange.shade200,
-                                child: Text(
-                                  "Buy",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700, fontSize: 20,color: Colors.pink.shade900),
-                                ),
-                              ),
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment_User(cart_data: access_total_amt,)));
-                              },
-                            )),
+                        ,
                       ],),
                   );
               }
@@ -355,7 +301,7 @@ class _Viewcart_UserState extends State<Viewcart_User> {
 
   Future<void> delrecord(String id) async {
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/cart_delete.php";
+        "http://192.168.29.64/MySampleApp/Charity_Hope/cancel_My_orders.php";
     var res = await http.post(Uri.parse(url), body: {
       "id": id,
 
@@ -374,34 +320,9 @@ class _Viewcart_UserState extends State<Viewcart_User> {
     }
   }
 
-  String returnTotalAmount(List<Cart_Model> _user) {
-    double totalAmount = 0.0;
-    for (int i = 0; i < _user.length; i++) {
-      totalAmount = totalAmount +
-          (double.parse(_user[i].price) *
-              double.parse(_user[i].qty));
-
-    }
-    return totalAmount.toString();
-
-  }
 
 
 
 
 
 }
-
-// class ProductCalculations {
-//   static String getTotalRateFromString(
-//       {required String productPrice, required String Quantity}) {
-//     String rate = "";
-//     double _Quantity = double.parse(Quantity);
-//     double _productPrice = double.parse(productPrice);
-//
-//     double totalAmount = _Quantity * _productPrice;
-//     rate = totalAmount.toInt().ceil().toString();
-//
-//     return rate;
-//   }
-// }
