@@ -174,6 +174,7 @@ class _Admin_add_craft_itemState extends State<Admin_add_craft_item> {
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                 child: TextFormField(
                   controller: price,
+                  keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(

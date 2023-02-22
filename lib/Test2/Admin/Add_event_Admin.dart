@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import '../../main.dart';
+import 'package:intl/intl.dart';
 
 class Hope_Admin_event_registration extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _Hope_Admin_event_registrationState
   TextEditingController event_date = new TextEditingController();
   TextEditingController event_time = new TextEditingController();
   TextEditingController description = new TextEditingController();
+  TextEditingController uid = new TextEditingController();
 
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
@@ -31,6 +33,7 @@ class _Hope_Admin_event_registrationState
     event_date = TextEditingController();
     event_time = TextEditingController();
     description = TextEditingController();
+    uid = TextEditingController(text: 'admin');
 
     status = false;
     message = "";
@@ -47,6 +50,7 @@ class _Hope_Admin_event_registrationState
           "event_date": event_date.text,
           "event_time": event_time.text,
           "description": description.text,
+          "uid":uid.text,
         });
 
     if (send.statusCode == 200) {
@@ -131,9 +135,43 @@ class _Hope_Admin_event_registrationState
                   SizedBox(
                     height: 30,
                   ),
+                  // Container(
+                  //   // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  //   child: TextFormField(
+                  //     controller: event_date,
+                  //     validator: (value) {
+                  //       if (value!.isEmpty) {
+                  //         return "Date Should not empty!";
+                  //       }
+                  //
+                  //       return null;
+                  //     },
+                  //     decoration: InputDecoration(
+                  //       labelText: "Pick event date",
+                  //       border: new OutlineInputBorder(
+                  //         borderSide: new BorderSide(color: Colors.teal),
+                  //       ),
+                  //     ),
+                  //     keyboardType: TextInputType.datetime,
+                  //   ),
+                  // ),
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
+                      onTap: ()async{
+                        DateTime? pickeddate= await showDatePicker
+                          (context: context,
+                            initialDate: DateTime.now(),
+                            firstDate:DateTime(2000),
+                            lastDate: DateTime(2101));
+                        if(pickeddate !=null){
+                          setState(() {
+                            event_date.text =DateFormat('yyyy-MM-dd').format(pickeddate);
+
+                          });
+                        }
+                      },
+
                       controller: event_date,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -143,7 +181,8 @@ class _Hope_Admin_event_registrationState
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: "Pick event date",
+                        icon: Icon(Icons.calendar_today_rounded),
+                        labelText: "Pick date",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
@@ -171,7 +210,7 @@ class _Hope_Admin_event_registrationState
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
                       ),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.datetime,
                     ),
                   ),
                   SizedBox(

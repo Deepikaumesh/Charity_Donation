@@ -201,7 +201,7 @@ class _Hope_User_Money_DonationState
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
                       ),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
                       //maxLines: 5,
                     ),
                   ),

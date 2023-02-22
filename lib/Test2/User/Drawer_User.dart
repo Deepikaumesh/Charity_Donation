@@ -7,6 +7,7 @@ import 'Event_Registration_User_.dart';
 import 'Money_Donation_User.dart';
 import 'My_Orders.dart';
 import 'Searchbar_Page.dart';
+import 'cancel_Event_Registration.dart';
 import 'cancel_food_donations.dart';
 
 
@@ -54,6 +55,9 @@ class UserDrawer extends StatelessWidget {
         SizedBox(
           height: 5.0,
         ),
+
+
+
         ListTile(
           onTap: () {
             Navigator.push(
@@ -71,6 +75,8 @@ class UserDrawer extends StatelessWidget {
               )),
         ),
 
+
+
         ListTile(
           onTap: () {
             Navigator.push(
@@ -87,6 +93,29 @@ class UserDrawer extends StatelessWidget {
                 fontSize: 15,
               )),
         ),
+
+
+
+
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => User_Event_Reistration_cancel()));
+          },
+          leading: Icon(
+            Icons.event,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Cancel Event Registration",
+              style: GoogleFonts.prompt(
+                fontSize: 15,
+              )),
+        ),
+
+
+
         ListTile(
           onTap: () {
             Navigator.push(

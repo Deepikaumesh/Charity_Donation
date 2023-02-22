@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 import '../../main.dart';
 
@@ -19,6 +20,7 @@ class _Hope_User_event_registrationState
   TextEditingController event_date = new TextEditingController();
   TextEditingController event_time = new TextEditingController();
   TextEditingController description = new TextEditingController();
+  TextEditingController uid = new TextEditingController();
 
   final GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
@@ -31,6 +33,8 @@ class _Hope_User_event_registrationState
     event_date = TextEditingController();
     event_time = TextEditingController();
     description = TextEditingController();
+    uid = TextEditingController();
+
 
     status = false;
     message = "";
@@ -41,12 +45,13 @@ class _Hope_User_event_registrationState
   Future<void> submitData() async {
     var send = await http.post(
         Uri.parse(
-            "http://$ip/MySampleApp/Charity_Hope/event_registration.php"),
+            "http://$ip/MySampleApp/Charity_Hope/User_event_registration.php"),
         body: {
           "name": name.text,
           "event_date": event_date.text,
           "event_time": event_time.text,
           "description": description.text,
+          "uid":uid_user,
         });
 
     if (send.statusCode == 200) {
@@ -134,6 +139,20 @@ class _Hope_User_event_registrationState
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                     child: TextFormField(
+                      onTap: ()async{
+                        DateTime? pickeddate= await showDatePicker
+                          (context: context,
+                            initialDate: DateTime.now(),
+                            firstDate:DateTime(2000),
+                            lastDate: DateTime(2101));
+                        if(pickeddate !=null){
+                          setState(() {
+                            event_date.text =DateFormat('yyyy-MM-dd').format(pickeddate);
+
+                          });
+                        }
+                      },
+
                       controller: event_date,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -143,7 +162,8 @@ class _Hope_User_event_registrationState
                         return null;
                       },
                       decoration: InputDecoration(
-                        labelText: "Pick event date",
+                        icon: Icon(Icons.calendar_today_rounded),
+                        labelText: "Pick date",
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
@@ -171,7 +191,7 @@ class _Hope_User_event_registrationState
                           borderSide: new BorderSide(color: Colors.teal),
                         ),
                       ),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.datetime,
                     ),
                   ),
                   SizedBox(
