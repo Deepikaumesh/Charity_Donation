@@ -333,7 +333,7 @@ class _My_Order_UserState extends State<My_Order_User> {
 
   Future<void> delrecord(String id) async {
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/cart_delete.php";
+        "http://$ip/MySampleApp/ORBVA/Admin/delete_workshop.php";
     var res = await http.post(Uri.parse(url), body: {
       "id": id,
     });

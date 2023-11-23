@@ -51,11 +51,11 @@ class _My_OrdersState extends State<My_Orders> {
   //Applying get request.
   Future<List<Cart_model_display_orderitems>> getRequest() async {
     //replace your restFull API here.
-    final _sharedPrefs = await SharedPreferences.getInstance();
-    final  ui = _sharedPrefs.getString("hope_userid");
+    // final _sharedPrefs = await SharedPreferences.getInstance();
+    // final  ui = _sharedPrefs.getString("hope_userid");
 
     String url =
-    "http://$ip/MySampleApp/Charity_Hope/Display_order_items.php?uid="+ui!;
+    "http://$ip/MySampleApp/Charity_Hope/Display_order_items.php?uid="+uid_user!;
 
     final response = await http.get(Uri.parse(url));
 

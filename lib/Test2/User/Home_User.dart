@@ -49,6 +49,7 @@ class _Home_UserState extends State<Home_User> {
         // Navigator.push(context, MaterialPageRoute(builder: (context)=>Hope_Main_Way()));
         //   },icon: Icon(Icons.arrow_back),),
         actions: [
+
           IconButton(
               onPressed: () {
                 Customer_Signout(context);
@@ -64,6 +65,7 @@ class _Home_UserState extends State<Home_User> {
           child: Column(
             children: [
               SizedBox(height: 20,),
+              Text("uid is : ${uid_user.toString()}"),
 
               _searchBar_field(),
 

@@ -23,10 +23,6 @@ class Cart_Model {
   final String image;
   final String description;
 
-
-
-
-
   Cart_Model({
     required this.id,
     required this.name,
@@ -51,13 +47,13 @@ class _Viewcart_UserState extends State<Viewcart_User> {
   //Applying get request.
   Future<List<Cart_Model>> getRequest() async {
     //replace your restFull API here.
-    final _sharedPrefs = await SharedPreferences.getInstance();
-    final  ui = _sharedPrefs.getString("hope_userid");
+    // final _sharedPrefs = await SharedPreferences.getInstance();
+    // final  ui = _sharedPrefs.getString("hope_userid");
 
     String url =
 
         // "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php";
-        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php?uid="+ui!;
+        "http://$ip/MySampleApp/Charity_Hope/user_view_cart.php?uid="+uid_user!;
    // "https://anthracitic-pecks.000webhostapp.com/Hope_Charity_Project/User/hope_cart_display_user.php";
 
     final response = await http.get(Uri.parse(url));
@@ -104,7 +100,8 @@ class _Viewcart_UserState extends State<Viewcart_User> {
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          children:[ FutureBuilder(
+          children:[
+            FutureBuilder(
             future: getRequest(),
             builder: (BuildContext ctx, AsyncSnapshot snapshot) {
               if (snapshot.data == null || snapshot.data == false) {

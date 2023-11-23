@@ -41,10 +41,10 @@ class _User_Event_Reistration_cancelState extends State<User_Event_Reistration_c
 
   Future<List<event_model>> getRequest() async {
     //replace your restFull API here.
-    final _sharedPrefs = await SharedPreferences.getInstance();
-    final  ui = _sharedPrefs.getString("hope_userid");
+    // final _sharedPrefs = await SharedPreferences.getInstance();
+    // final  ui = _sharedPrefs.getString("id");
     String url =
-        "http://$ip/MySampleApp/Charity_Hope/cancel_event_registration.php?uid="+ui!;
+        "http://$ip/MySampleApp/Charity_Hope/cancel_event_registration.php?uid="+uid_user!;
 
     final response = await http.get(Uri.parse(url));
 

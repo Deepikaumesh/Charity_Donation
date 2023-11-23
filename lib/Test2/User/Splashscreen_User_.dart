@@ -21,7 +21,12 @@ class Hope_User_Splash extends StatefulWidget {
 class _Hope_User_SplashState extends State<Hope_User_Splash> {
 
   void initState() {
-    checkHopeUserLoogedIn();
+
+    setState(() {
+      checkHopeUserLoogedIn();
+      Get_Id();
+    });
+
     super.initState();
   }
 
@@ -89,7 +94,7 @@ class _Hope_User_SplashState extends State<Hope_User_Splash> {
   Future<void> checkHopeUserLoogedIn() async {
     final _sharedPrefs = await SharedPreferences.getInstance();
     // print("first key check "+Customer_Key);
-    final _hope_user_userid = _sharedPrefs.getString("hope_userid");
+    final _hope_user_userid = _sharedPrefs.getString("id");
 
     if (_hope_user_userid == null) {
       HopeUser_gotoLogin();
@@ -99,4 +104,14 @@ class _Hope_User_SplashState extends State<Hope_User_Splash> {
           MaterialPageRoute(builder: (context) => Hope_User_Dashboard()));
     }
   }
+
+  Get_Id() async {
+    final _CustomersharedPrefs = await SharedPreferences.getInstance();
+    var obtain_id = _CustomersharedPrefs.getString("id");
+    setState(() {
+      uid_user = obtain_id!;
+    });
+
+  }
+
 }

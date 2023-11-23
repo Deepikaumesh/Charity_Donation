@@ -44,7 +44,7 @@ class _User_food_donation_cancelState extends State<User_food_donation_cancel> {
     final _sharedPrefs = await SharedPreferences.getInstance();
     final  ui = _sharedPrefs.getString("hope_userid");
     String url =
-        "http://192.168.29.64/MySampleApp/Charity_Hope/cancel_food_bookings.php?uid="+ui!;
+        "http://192.168.29.64/MySampleApp/Charity_Hope/cancel_food_bookings.php?uid="+uid_user!;
 
     final response = await http.get(Uri.parse(url));
 

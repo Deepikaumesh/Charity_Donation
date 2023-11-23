@@ -21,6 +21,7 @@ class event_data_model {
     required this.id,
     required this.name,
     required this.event_date,
+
     required this.event_time,
     required this.description,
   });

@@ -239,7 +239,7 @@ class _Admin_remove_Craftitem_pageState
     //replace your restFull API here.
 
     final response = await http.get(Uri.parse(
-        "http://192.168.29.64/MySampleApp/Charity_Hope/Admin_craft_Display.php"));
+        "http://$ip/MySampleApp/Charity_Hope/Admin_craft_Display.php"));
 
     var responseData = json.decode(response.body);
 

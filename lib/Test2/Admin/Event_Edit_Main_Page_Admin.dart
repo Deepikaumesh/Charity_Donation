@@ -171,10 +171,7 @@ class _Hope_Admin_event_Display_edit_pageState
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                  Hope_Admin_Edit_event(
-                                                                    data_user:
-                                                                        snapshot
-                                                                            .data[index],
+                                                                  Hope_Admin_Edit_event(data_user: snapshot.data[index],
                                                                   )));
                                                     },
                                                   ),

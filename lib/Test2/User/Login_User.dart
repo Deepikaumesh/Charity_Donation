@@ -19,6 +19,14 @@ class Hope_use_Login extends StatefulWidget {
 }
 
 class _Hope_use_LoginState extends State<Hope_use_Login> {
+
+
+  Get_Id() async {
+    final _CustomersharedPrefs = await SharedPreferences.getInstance();
+    await _CustomersharedPrefs.setString("id",uid_user);
+  }
+
+
   TextEditingController hope_user_user = TextEditingController();
   TextEditingController Hope_user_pass = TextEditingController();
   final GlobalKey<FormState> user_formkey = GlobalKey<FormState>();
@@ -215,14 +223,9 @@ class _Hope_use_LoginState extends State<Hope_use_Login> {
 
         print(singleUser["id"]);
         uid_user=singleUser["id"];
+        Get_Id();
 
-        final _UserrsharedPrefs = await SharedPreferences.getInstance();
-        // await _CustomersharedPrefs.setBool(Customer_Key, true);
-        await _UserrsharedPrefs.setString("hope_userid", singleUser["id"]);
 
-        // print(response);
-        //Customer_Key=singleUser["id"];
-        //print("key:"+Customer_Key);
       }
 
       final snackBar = SnackBar(

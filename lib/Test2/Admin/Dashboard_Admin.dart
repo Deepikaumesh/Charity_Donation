@@ -276,10 +276,10 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
         elevation: 4,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-      //  iconSize: 40,
+        //  iconSize: 40,
         selectedFontSize: 15,
         unselectedFontSize: 13,
-      //  showSelectedLabels: false,
+        //  showSelectedLabels: false,
         currentIndex: currentIndex,
         onTap: (index) =>setState(() =>currentIndex = index),
         items: [
@@ -309,7 +309,7 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
   }
 
   Customer_Signout(BuildContext ctx) async //using navigator so we need context
-  {
+      {
     final _CustomersharedPrefs = await SharedPreferences.getInstance();
     await _CustomersharedPrefs.clear();
     //push new page and remove all other pages
@@ -317,6 +317,6 @@ class _Hope_Admin_DashboardState extends State<Hope_Admin_Dashboard> {
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (ctx1) => Hope_Admin_Login()),
-        (route) => false);
+            (route) => false);
   }
 }
